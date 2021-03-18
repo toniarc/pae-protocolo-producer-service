@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+            
+    
+    <wb-module deploy-name="application">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
+                
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/annotations"/>
+                        
+        
+        <dependent-module deploy-path="/" handle="module:/resource/activemq-adapter/activemq-adapter">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+                        
+        
+        <dependent-module deploy-path="/" handle="module:/resource/domain/domain">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+                        
+        
+        <dependent-module deploy-path="/" handle="module:/resource/jpa-persistence-adapter/jpa-persistence-adapter">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/spring-webclient-adapter/spring-webclient-adapter">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                    
+    
+    </wb-module>
+        
+
+</project-modules>

@@ -1,0 +1,2 @@
+//com.springsource.sts.config.flow.coordinates\:http\://www.springframework.org/schema/integration\:/application/src/main/resources/META-INF/spring/integration/spring-integration-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<graph>\n<element clazz\="GatewayModelElement" type\="gateway">\n<structure end\="742" endstart\="742" start\="476" startend\="742"/>\n<bounds height\="127" width\="126" x\="19" y\="17"/>\n</element>\n</graph>
+eclipse.preferences.version=1

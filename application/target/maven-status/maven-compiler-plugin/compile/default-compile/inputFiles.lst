@@ -1,0 +1,7 @@
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/application/controller/ProtocoloController.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/application/service/SequencialDocumentoApplicationService.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/application/service/ProtocoloApplicationService.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/PaeProtocoloProducerServiceApp.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/application/factory/DomainRegistry.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/application/service/TransactionalServiceImpl.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/application/src/main/java/br/gov/pa/prodepa/pae/protocolo/application/controller/SequencialDocumentoController.java

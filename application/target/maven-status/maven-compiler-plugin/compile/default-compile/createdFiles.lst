@@ -1,0 +1,7 @@
+br/gov/pa/prodepa/pae/protocolo/PaeProtocoloProducerServiceApp.class
+br/gov/pa/prodepa/pae/protocolo/application/controller/ProtocoloController.class
+br/gov/pa/prodepa/pae/protocolo/application/controller/SequencialDocumentoController.class
+br/gov/pa/prodepa/pae/protocolo/application/service/TransactionalServiceImpl.class
+br/gov/pa/prodepa/pae/protocolo/application/service/SequencialDocumentoApplicationService.class
+br/gov/pa/prodepa/pae/protocolo/application/service/ProtocoloApplicationService.class
+br/gov/pa/prodepa/pae/protocolo/application/factory/DomainRegistry.class
