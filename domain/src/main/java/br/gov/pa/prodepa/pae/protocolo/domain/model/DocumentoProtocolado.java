@@ -19,6 +19,7 @@ public class DocumentoProtocolado {
 	private Long assuntoId;
 	private Long municipioId;
 	private Long documentoId;
+	
 	private Integer ano;
 	private Long sequencial;
 	private OrigemDocumento origemDocumento;
@@ -27,19 +28,23 @@ public class DocumentoProtocolado {
 	private Prioridade prioridade;
 	private TipoDestino tipoDestino;
 	private List<Long> assinantesIds;
-	private List<Long> destinoIds;
+
+	//private List<Long> orgaosDestinoIds;
+	//private List<Long> localizacoesDestinoIds;
+	
+	private List<Long> destinosIds;
+
 	private String conteudoDocumento;
 	private Long modeloConteudoId;
-	private List<Long> pessoaFisicaInteressadoIds;
-	private List<Long> pessoaJuridicaInteressadoIds;
-	private List<Long> orgaoInteressadoIds;
-	private List<Long> localizacaoInteressadoIds;
+	private List<Long> pessoasFisicasInteressadasIds;
+	private List<Long> pessoasJuridicasInteressadasIds;
+	private List<Long> orgaosInteressadosIds;
+	private List<Long> localizacoesInteressadasIds;
 	private Long localizacaoOrigemId;
 	private Long orgaoOrigemId;
 	
 	public static DocumentoProtocolado buildFrom(ProtocolarDocumentoDto dto) {
-		
-		DocumentoProtocolado dp = DocumentoProtocolado.builder()
+		return DocumentoProtocolado.builder()
 		.especieId(dto.getEspecieId())
 		.assuntoId(dto.getAssuntoId())
 		.municipioId(dto.getMunicipioId())
@@ -49,16 +54,22 @@ public class DocumentoProtocolado {
 		.prioridade(dto.getPrioridade())
 		.tipoDestino(dto.getTipoDestino())
 		.assinantesIds(dto.getAssinantesIds())
-		.destinoIds(dto.getDestinosIds())
-		.pessoaFisicaInteressadoIds(dto.getInteressadosPessoasFisicasIds())
-		.pessoaJuridicaInteressadoIds(dto.getInteressadosPessoasFisicasIds())
-		.orgaoInteressadoIds(dto.getInteressadosOrgaosIds())
-		.localizacaoInteressadoIds(dto.getInteressadosLocalizacoesIds())
+		.destinosIds(dto.getDestinosIds())
+		/*
+		.orgaosDestinoIds(dto.getTipoDestino().equals(TipoDestino.ORGAO) && dto.getDestinosIds() != null
+				? dto.getDestinosIds() 
+				: null)
+		.localizacoesDestinoIds(dto.getTipoDestino().equals(TipoDestino.SETOR)  && dto.getDestinosIds() != null
+				? dto.getDestinosIds() 
+				: null)
+		*/
+		.pessoasFisicasInteressadasIds(dto.getInteressadosPessoasFisicasIds())
+		.pessoasJuridicasInteressadasIds(dto.getInteressadosPessoasJuridicasIds())
+		.orgaosInteressadosIds(dto.getInteressadosOrgaosIds())
+		.localizacoesInteressadasIds(dto.getInteressadosLocalizacoesIds())
 		.localizacaoOrigemId(dto.getLocalizacaoOrigemId())
 		.orgaoOrigemId(dto.getOrgaoOrigemId())
 		.build();
-		
-		return dp;
 	}
 	
 }

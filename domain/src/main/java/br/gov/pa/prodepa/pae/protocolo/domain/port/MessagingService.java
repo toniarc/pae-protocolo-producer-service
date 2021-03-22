@@ -1,12 +1,14 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.port;
 
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocolarDocumentoDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
+import br.gov.pa.prodepa.pae.suporte.client.PaeSuporteEnricherDto;
 
 public interface MessagingService {
 
-	void sendMessage(ProtocoloDto protocoloDto);
+	void enviarParaFilaProtocolarDocumento(ProtocoloDto protocoloDto, String correlationId);
 
-	String enriquecerModeloDadosSuporte(ProtocolarDocumentoDto dto);
+	PaeSuporteEnricherDto enriquecerModeloDadosSuporte(PaeSuporteEnricherDto enricher);
+
+	//String enriquecerModeloDadosSuporte(ProtocolarDocumentoDto dto);
 
 }

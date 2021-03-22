@@ -1,2 +1,2 @@
-/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/adapters/activemq-adapter/src/main/java/br/gov/pa/prodepa/pae/protocolo/activemqadapter/producer/ProtocoloProducer.java
+/home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/adapters/activemq-adapter/src/main/java/br/gov/pa/prodepa/pae/protocolo/activemqadapter/producer/MessagingServiceImpl.java
 /home/antoniojunior/development/git/prodepa/pae-protocolo-producer-service/adapters/activemq-adapter/src/main/java/br/gov/pa/prodepa/pae/protocolo/activemqadapter/config/Config.java

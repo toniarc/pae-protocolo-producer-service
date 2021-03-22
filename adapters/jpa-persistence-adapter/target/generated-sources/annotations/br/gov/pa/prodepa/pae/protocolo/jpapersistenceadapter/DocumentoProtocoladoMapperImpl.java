@@ -9,7 +9,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-03-18T08:21:28-0300",
+    date = "2021-03-22T03:48:39-0300",
     comments = "version: 1.4.1.Final, compiler: Eclipse JDT (IDE) 3.24.0.v20201123-0742, environment: Java 15.0.1 (Oracle Corporation)"
 )
 public class DocumentoProtocoladoMapperImpl implements DocumentoProtocoladoMapper {
@@ -33,35 +33,35 @@ public class DocumentoProtocoladoMapperImpl implements DocumentoProtocoladoMappe
         documentoProtocolado.complemento( entity.getComplemento() );
         documentoProtocolado.conteudoDocumento( entity.getConteudoDocumento() );
         documentoProtocolado.dataCadastro( entity.getDataCadastro() );
-        List<Long> list1 = entity.getDestinoIds();
+        List<Long> list1 = entity.getDestinosIds();
         if ( list1 != null ) {
-            documentoProtocolado.destinoIds( new ArrayList<Long>( list1 ) );
+            documentoProtocolado.destinosIds( new ArrayList<Long>( list1 ) );
         }
         documentoProtocolado.documentoId( entity.getDocumentoId() );
         documentoProtocolado.especieId( entity.getEspecieId() );
         documentoProtocolado.id( entity.getId() );
-        List<Long> list2 = entity.getLocalizacaoInteressadoIds();
-        if ( list2 != null ) {
-            documentoProtocolado.localizacaoInteressadoIds( new ArrayList<Long>( list2 ) );
-        }
         documentoProtocolado.localizacaoOrigemId( entity.getLocalizacaoOrigemId() );
+        List<Long> list2 = entity.getLocalizacoesInteressadasIds();
+        if ( list2 != null ) {
+            documentoProtocolado.localizacoesInteressadasIds( new ArrayList<Long>( list2 ) );
+        }
         if ( entity.getModeloConteudoId() != null ) {
             documentoProtocolado.modeloConteudoId( Long.parseLong( entity.getModeloConteudoId() ) );
         }
         documentoProtocolado.municipioId( entity.getMunicipioId() );
-        List<Long> list3 = entity.getOrgaoInteressadoIds();
-        if ( list3 != null ) {
-            documentoProtocolado.orgaoInteressadoIds( new ArrayList<Long>( list3 ) );
-        }
         documentoProtocolado.orgaoOrigemId( entity.getOrgaoOrigemId() );
-        documentoProtocolado.origemDocumento( entity.getOrigemDocumento() );
-        List<Long> list4 = entity.getPessoaFisicaInteressadoIds();
-        if ( list4 != null ) {
-            documentoProtocolado.pessoaFisicaInteressadoIds( new ArrayList<Long>( list4 ) );
+        List<Long> list3 = entity.getOrgaosInteressadosIds();
+        if ( list3 != null ) {
+            documentoProtocolado.orgaosInteressadosIds( new ArrayList<Long>( list3 ) );
         }
-        List<Long> list5 = entity.getPessoaJuridicaInteressadoIds();
+        documentoProtocolado.origemDocumento( entity.getOrigemDocumento() );
+        List<Long> list4 = entity.getPessoasFisicasInteressadasIds();
+        if ( list4 != null ) {
+            documentoProtocolado.pessoasFisicasInteressadasIds( new ArrayList<Long>( list4 ) );
+        }
+        List<Long> list5 = entity.getPessoasJuridicasInteressadasIds();
         if ( list5 != null ) {
-            documentoProtocolado.pessoaJuridicaInteressadoIds( new ArrayList<Long>( list5 ) );
+            documentoProtocolado.pessoasJuridicasInteressadasIds( new ArrayList<Long>( list5 ) );
         }
         documentoProtocolado.prioridade( entity.getPrioridade() );
         documentoProtocolado.sequencial( entity.getSequencial() );
@@ -89,35 +89,35 @@ public class DocumentoProtocoladoMapperImpl implements DocumentoProtocoladoMappe
         documentoProtocoladoEntity.setComplemento( model.getComplemento() );
         documentoProtocoladoEntity.setConteudoDocumento( model.getConteudoDocumento() );
         documentoProtocoladoEntity.setDataCadastro( model.getDataCadastro() );
-        List<Long> list1 = model.getDestinoIds();
+        List<Long> list1 = model.getDestinosIds();
         if ( list1 != null ) {
-            documentoProtocoladoEntity.setDestinoIds( new ArrayList<Long>( list1 ) );
+            documentoProtocoladoEntity.setDestinosIds( new ArrayList<Long>( list1 ) );
         }
         documentoProtocoladoEntity.setDocumentoId( model.getDocumentoId() );
         documentoProtocoladoEntity.setEspecieId( model.getEspecieId() );
         documentoProtocoladoEntity.setId( model.getId() );
-        List<Long> list2 = model.getLocalizacaoInteressadoIds();
-        if ( list2 != null ) {
-            documentoProtocoladoEntity.setLocalizacaoInteressadoIds( new ArrayList<Long>( list2 ) );
-        }
         documentoProtocoladoEntity.setLocalizacaoOrigemId( model.getLocalizacaoOrigemId() );
+        List<Long> list2 = model.getLocalizacoesInteressadasIds();
+        if ( list2 != null ) {
+            documentoProtocoladoEntity.setLocalizacoesInteressadasIds( new ArrayList<Long>( list2 ) );
+        }
         if ( model.getModeloConteudoId() != null ) {
             documentoProtocoladoEntity.setModeloConteudoId( String.valueOf( model.getModeloConteudoId() ) );
         }
         documentoProtocoladoEntity.setMunicipioId( model.getMunicipioId() );
-        List<Long> list3 = model.getOrgaoInteressadoIds();
-        if ( list3 != null ) {
-            documentoProtocoladoEntity.setOrgaoInteressadoIds( new ArrayList<Long>( list3 ) );
-        }
         documentoProtocoladoEntity.setOrgaoOrigemId( model.getOrgaoOrigemId() );
-        documentoProtocoladoEntity.setOrigemDocumento( model.getOrigemDocumento() );
-        List<Long> list4 = model.getPessoaFisicaInteressadoIds();
-        if ( list4 != null ) {
-            documentoProtocoladoEntity.setPessoaFisicaInteressadoIds( new ArrayList<Long>( list4 ) );
+        List<Long> list3 = model.getOrgaosInteressadosIds();
+        if ( list3 != null ) {
+            documentoProtocoladoEntity.setOrgaosInteressadosIds( new ArrayList<Long>( list3 ) );
         }
-        List<Long> list5 = model.getPessoaJuridicaInteressadoIds();
+        documentoProtocoladoEntity.setOrigemDocumento( model.getOrigemDocumento() );
+        List<Long> list4 = model.getPessoasFisicasInteressadasIds();
+        if ( list4 != null ) {
+            documentoProtocoladoEntity.setPessoasFisicasInteressadasIds( new ArrayList<Long>( list4 ) );
+        }
+        List<Long> list5 = model.getPessoasJuridicasInteressadasIds();
         if ( list5 != null ) {
-            documentoProtocoladoEntity.setPessoaJuridicaInteressadoIds( new ArrayList<Long>( list5 ) );
+            documentoProtocoladoEntity.setPessoasJuridicasInteressadasIds( new ArrayList<Long>( list5 ) );
         }
         documentoProtocoladoEntity.setPrioridade( model.getPrioridade() );
         documentoProtocoladoEntity.setSequencial( model.getSequencial() );

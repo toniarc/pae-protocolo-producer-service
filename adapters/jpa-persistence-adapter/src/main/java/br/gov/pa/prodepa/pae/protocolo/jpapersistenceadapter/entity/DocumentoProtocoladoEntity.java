@@ -85,7 +85,7 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	
 	@Type(type = "list-array")
 	@Column(name = "destino_ids", nullable = false)
-	private List<Long> destinoIds;
+	private List<Long> destinosIds;
 	
 	@Column(name = "conteudo_documento", nullable = false)
 	private String conteudoDocumento;
@@ -95,19 +95,19 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	
 	@Type(type = "list-array")
 	@Column(name = "pessoa_fisica_interessado_ids")
-	private List<Long> pessoaFisicaInteressadoIds;
+	private List<Long> pessoasFisicasInteressadasIds;
 	
 	@Type(type = "list-array")
 	@Column(name = "pessoa_juridica_interessado_ids")
-	private List<Long> pessoaJuridicaInteressadoIds;
+	private List<Long> pessoasJuridicasInteressadasIds;
 	
 	@Type(type = "list-array")
 	@Column(name = "orgao_interessado_ids")
-	private List<Long> orgaoInteressadoIds;
+	private List<Long> orgaosInteressadosIds;
 	
 	@Type(type = "list-array")
 	@Column(name = "localizacao_interessado_ids")
-	private List<Long> localizacaoInteressadoIds;
+	private List<Long> localizacoesInteressadasIds;
 	
 	@Column(name = "localizacao_origem_id")
 	private Long localizacaoOrigemId;
