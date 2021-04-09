@@ -3,9 +3,9 @@ package br.gov.pa.prodepa.pae.protocolo.domain.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import br.gov.pa.prodepa.pae.protocolo.domain.model.OrigemDocumento;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Prioridade;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoDestino;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.OrigemDocumento;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.Prioridade;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.TipoDestino;
 import lombok.Getter;
 import lombok.Setter;
 

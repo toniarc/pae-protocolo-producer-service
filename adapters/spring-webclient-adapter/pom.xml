@@ -16,5 +16,10 @@
 			<artifactId>domain</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>br.gov.pa.prodepa.pae-common</groupId>
+			<artifactId>pae-common-rest</artifactId>
+			<version>0.0.1-springboot-2.4.2</version>
+		</dependency>
 	</dependencies>
 </project>

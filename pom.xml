@@ -7,12 +7,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
+		<version>2.4.3</version>
 	</parent>
 
 	<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
 	<artifactId>pae-protocolo-producer-service</artifactId>
 	<version>1.0.0</version>
+	
 	<name>pae-protocolo-producer-service</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>pom</packaging>
@@ -46,22 +47,15 @@
 
 		<dependency>
 			<groupId>br.gov.pa.prodepa</groupId>
-			<artifactId>pae-documento-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>br.gov.pa.prodepa.pae</groupId>
-			<artifactId>pae-suporte-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>br.gov.pa.prodepa</groupId>
 			<artifactId>nucleopa-client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
+		<dependency>
+			<groupId>br.gov.pa.prodepa.pae-common</groupId>
+			<artifactId>pae-protocolo-client</artifactId>
+			<version>0.0.1-springboot-2.4.2</version>
+		</dependency>
 	</dependencies>
 
 	<modules>

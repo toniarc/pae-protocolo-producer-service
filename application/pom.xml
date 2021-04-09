@@ -13,6 +13,13 @@
 
 	<dependencies>
 
+		<!-- 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
+		</dependency>
+		 -->
+
 		<dependency>
 			<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
 			<artifactId>activemq-adapter</artifactId>
@@ -26,11 +33,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
@@ -40,23 +42,23 @@
 			<artifactId>jpa-persistence-adapter</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
 			<artifactId>spring-webclient-adapter</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>br.gov.pa.prodepa.pae-common</groupId>
 			<artifactId>pae-common-rest</artifactId>
 			<version>0.0.1-springboot-2.4.2</version>
-		</dependency> -->
+		</dependency>
 	</dependencies>
 
 	<build>

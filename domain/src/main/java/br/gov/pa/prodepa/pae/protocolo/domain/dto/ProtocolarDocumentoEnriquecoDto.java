@@ -5,11 +5,11 @@ import java.util.List;
 import br.gov.pa.prodepa.nucleopa.client.MunicipioBasicDto;
 import br.gov.pa.prodepa.nucleopa.client.PessoaFisicaBasicDto;
 import br.gov.pa.prodepa.nucleopa.client.PessoaJuridicaBasicDto;
+import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
 import br.gov.pa.prodepa.pae.documento.client.DocumentoBasicDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.OrigemDocumento;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Prioridade;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoDestino;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Usuario;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.OrigemDocumento;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.Prioridade;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.TipoDestino;
 import br.gov.pa.prodepa.pae.suporte.client.AssuntoBasicDto;
 import br.gov.pa.prodepa.pae.suporte.client.EspecieBasicDto;
 import br.gov.pa.prodepa.pae.suporte.client.LocalizacaoBasicDto;
@@ -38,7 +38,7 @@ public class ProtocolarDocumentoEnriquecoDto {
 	private Prioridade prioridade;
 	
 	//assinantes
-	private List<Usuario> assinantess;
+	private List<UsuarioDto> assinantess;
 	
 	//interessados
 	private List<PessoaFisicaBasicDto> interessadosPessoasFisicas;

@@ -5,10 +5,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Usuario;
+import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.DocumentoProtocoladoRepository;
-import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeDocumentoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.MessagingService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.NucleopaService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeDocumentoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.SequencialDocumentoRepository;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.TransactionalService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.DocumentoProtocoladoDomainService;
@@ -32,18 +33,19 @@ public class DomainRegistry {
 	public ProtocoloService criarProtocoloService() {
 		return new DocumentoProtocoladoDomainService(
 				applicationContext.getBean(MessagingService.class),
-				applicationContext.getBean(Usuario.class),
+				applicationContext.getBean(UsuarioDto.class),
 				applicationContext.getBean(SequencialDocumentoRepository.class),
 				applicationContext.getBean(PaeDocumentoService.class), 
 				applicationContext.getBean(DocumentoProtocoladoRepository.class),
-				applicationContext.getBean(SequencialDocumentoService.class));
+				applicationContext.getBean(SequencialDocumentoService.class),
+				applicationContext.getBean(NucleopaService.class));
 	}
 	
 	@Bean
 	public SequencialDocumentoService criarSequencialDocumentoService() {
 		return new SequencialDocumentoDomainService(
 				applicationContext.getBean(SequencialDocumentoRepository.class),
-				applicationContext.getBean(Usuario.class),
+				applicationContext.getBean(UsuarioDto.class),
 				applicationContext.getBean(TransactionalService.class) 
 				);
 	}

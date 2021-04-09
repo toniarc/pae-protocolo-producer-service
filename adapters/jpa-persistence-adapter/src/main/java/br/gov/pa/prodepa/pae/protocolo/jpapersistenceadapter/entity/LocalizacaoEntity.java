@@ -1,5 +1,6 @@
 package br.gov.pa.prodepa.pae.protocolo.jpapersistenceadapter.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,6 +21,9 @@ public class LocalizacaoEntity {
 	@Id
 	private Long id;
 	private String nome;
+	
+	@Column(name = "nome_hierarquia_completa")
+	private String nomeHierarquiaCompleta;
 	
 	@Override
 	public int hashCode() {

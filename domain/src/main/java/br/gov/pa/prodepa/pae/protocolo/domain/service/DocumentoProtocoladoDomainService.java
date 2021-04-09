@@ -1,22 +1,29 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.service;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import br.gov.pa.prodepa.nucleopa.client.MunicipioBasicDto;
 import br.gov.pa.prodepa.nucleopa.client.PessoaFisicaBasicDto;
 import br.gov.pa.prodepa.nucleopa.client.PessoaJuridicaBasicDto;
+import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
+import br.gov.pa.prodepa.pae.common.domain.exception.DomainException;
 import br.gov.pa.prodepa.pae.documento.client.DocumentoBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.DocumentoProtocoladoBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.ProtocoloDto;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.TipoDestino;
+import br.gov.pa.prodepa.pae.protocolo.client.util.ProtocoloUtil;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocolarDocumentoDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.DocumentoProtocolado;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.NumeroDocumentoReservado;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.SequencialDocumento;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoDestino;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Usuario;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.DocumentoProtocoladoRepository;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.MessagingService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.NucleopaService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeDocumentoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.SequencialDocumentoRepository;
 import br.gov.pa.prodepa.pae.suporte.client.PaeSuporteEnricherDto;
@@ -24,17 +31,19 @@ import br.gov.pa.prodepa.pae.suporte.client.PaeSuporteEnricherDto;
 public class DocumentoProtocoladoDomainService implements ProtocoloService {
 
 	private final MessagingService messagingService;
-	private final Usuario usuarioLogado;
+	private final UsuarioDto usuarioLogado;
 	private final SequencialDocumentoRepository sequencialRepository;
 	private final PaeDocumentoService documentoService;
 	private final DocumentoProtocoladoRepository documentoRepository;
 	private final SequencialDocumentoService sequencialDocumentoService;
+	private final NucleopaService nucleopaService;
 	
-	public DocumentoProtocoladoDomainService(MessagingService messagingService, Usuario usuarioLogado,
+	public DocumentoProtocoladoDomainService(MessagingService messagingService, UsuarioDto usuarioLogado,
 			SequencialDocumentoRepository sequencialRepository,
 			PaeDocumentoService documentoService, 
 			DocumentoProtocoladoRepository documentoRepository, 
-			SequencialDocumentoService sequencialDocumentoService) {
+			SequencialDocumentoService sequencialDocumentoService,
+			NucleopaService nucleopaService) {
 		super();
 		this.messagingService = messagingService;
 		this.usuarioLogado = usuarioLogado;
@@ -42,6 +51,7 @@ public class DocumentoProtocoladoDomainService implements ProtocoloService {
 		this.documentoService = documentoService;
 		this.documentoRepository = documentoRepository;
 		this.sequencialDocumentoService = sequencialDocumentoService;
+		this.nucleopaService = nucleopaService;
 	}
 
 	public PaeSuporteEnricherDto enriquecerDadosPaeSuporte(ProtocolarDocumentoDto dto) {
@@ -64,18 +74,25 @@ public class DocumentoProtocoladoDomainService implements ProtocoloService {
 		
 		// CONTROLE ACESSO
 		// TODO checar se os assinantes (usuarios do CA) existem
-
-		// NUCLEO-PA
-		// TODO checar se o municipio existe
-		// TODO checar se os interessados (pessoa fisica e juridica do nucleopa) existem
 		
 		return enrichedParams;
 	}
 	
 	public void protocolarDocumento(ProtocolarDocumentoDto dto) {
+
+		DocumentoBasicDto documento = documentoService.buscarDocumentoPorId(dto.getDocumentoId());
+		documento.getModeloConteudo().setModeloEstrutura(documentoService.buscarModeloEstruturaPorId(documento.getModeloConteudo().getId()));
+		
+		ProtocoloUtil.validarCamposDinamicosUsadosNoDocumento(documento.getConteudo(), dto.getTipoDestino());
+		ProtocoloUtil.validarCamposDinamicosUsadosNoDocumento(documento.getModeloConteudo().getModeloEstrutura().getCabecalho(), dto.getTipoDestino());
+		ProtocoloUtil.validarCamposDinamicosUsadosNoDocumento(documento.getModeloConteudo().getModeloEstrutura().getRodape(), dto.getTipoDestino());
 		
 		PaeSuporteEnricherDto dtoEnriquecido = enriquecerDadosPaeSuporte(dto);
 		validarExistenciaEntidadesPaeSuporte(dtoEnriquecido, dto);
+		
+		List<PessoaFisicaBasicDto> pessoasFisicas = nucleopaService.buscarPessoaFisicaPorId(new HashSet<Long>(dto.getInteressadosPessoasFisicasIds()));
+		List<PessoaJuridicaBasicDto> pessoasJuridicas = nucleopaService.buscarPessoaJuridicaPorId(new HashSet<Long>(dto.getInteressadosPessoasJuridicasIds()));
+		List<MunicipioBasicDto> municipios = nucleopaService.buscarMunicipioPorId(new HashSet<Long>(Arrays.asList( dto.getMunicipioId())));
 		
 		DocumentoProtocolado dp = DocumentoProtocolado.buildFrom(dto);
 		
@@ -85,17 +102,13 @@ public class DocumentoProtocoladoDomainService implements ProtocoloService {
 			dp.setAno(sequencial.getAno());
 			dp.setSequencial(sequencial.getSequencial());
 		} else {
-			NumeroDocumentoReservado numeroReservado = sequencialRepository
-					.buscarNumeroReservado(dto.getNumeroReservadoId());
+			NumeroDocumentoReservado numeroReservado = sequencialRepository.buscarNumeroReservado(dto.getNumeroReservadoId());
 			if (numeroReservado.getDocumentoProtocolado() != null) {
-				//throw new DomainException("O número reservado escolhido já foi usado por outra pessoa.");
+				throw new DomainException("O número reservado escolhido já foi usado por outra pessoa.");
 			}
 		}
 
 		dp.setDataCadastro(new Date());
-		
-		DocumentoBasicDto documento = documentoService.buscarDocumentoPorId(dp.getDocumentoId());
-		documento.getModeloConteudo().setModeloEstrutura(documentoService.buscarModeloEstruturaPorId(documento.getModeloConteudo().getId()));
 		
 		dp.setConteudoDocumento(documento.getConteudo());
 		dp.setModeloConteudoId(documento.getModeloConteudo().getId());
@@ -106,30 +119,42 @@ public class DocumentoProtocoladoDomainService implements ProtocoloService {
 		
 		for (Long destinoId : dp.getDestinosIds()) {
 			ProtocoloDto protocoloDto = new ProtocoloDto();
+			protocoloDto.setTipoDestino(dp.getTipoDestino());
 			protocoloDto.setAssunto(dtoEnriquecido.getAssunto(dp.getAssuntoId()));
 			protocoloDto.setEspecie(dtoEnriquecido.getEspecie(dp.getEspecieId()));
 			
 			documento.setAno(documentoProtocoladoSalvo.getAno());
 			documento.setSequencial(documentoProtocoladoSalvo.getSequencial());
-			protocoloDto.setDocumentoProtocolado(documento);
+			protocoloDto.setDocumento(documento);
+			protocoloDto.setDocumentoProtocolado(DocumentoProtocoladoBasicDto.builder()
+					.ano(documentoProtocoladoSalvo.getAno())
+					.id(documentoProtocoladoSalvo.getId())
+					.numero(documentoProtocoladoSalvo.getSequencial())
+					.dataCadastro(documentoProtocoladoSalvo.getDataCadastro())
+					.build());
 			
 			protocoloDto.setComplemento(documentoProtocoladoSalvo.getComplemento());
 			protocoloDto.setLocalizacaoOrigem(dtoEnriquecido.getLocalizacao(dp.getLocalizacaoOrigemId()));
 			protocoloDto.setOrgaoOrigem(dtoEnriquecido.getOrgao(dp.getOrgaoOrigemId()));
 			protocoloDto.setOrigemDocumento(dp.getOrigemDocumento());
 			protocoloDto.setPrioridade(dp.getPrioridade());
-			protocoloDto.setMunicipio(new MunicipioBasicDto(1L, "Belem"));
+			protocoloDto.setMunicipio( municipios.stream().filter( m -> m.getId().equals(dto.getMunicipioId())).findFirst().get() );
 			protocoloDto.setUsuarioCadastro(usuarioLogado);
 			
 			//TODO alterar 
-			protocoloDto.setInteressadosPessoasFisicas(dp.getPessoasFisicasInteressadasIds().stream().map( id -> PessoaFisicaBasicDto.builder().id(id).build()).collect(Collectors.toList()));
-			protocoloDto.setInteressadosPessoasJuricas(dp.getPessoasJuridicasInteressadasIds().stream().map( id -> PessoaJuridicaBasicDto.builder().id(id).build()).collect(Collectors.toList()));
+			protocoloDto.setInteressadosPessoasFisicas(dp.getPessoasFisicasInteressadasIds().stream().map( id -> {
+				return pessoasFisicas.stream().filter( pf -> pf.getId().equals(id)).findFirst().get();
+			}).collect(Collectors.toList()));
+			
+			protocoloDto.setInteressadosPessoasJuricas(dp.getPessoasJuridicasInteressadasIds().stream().map( id -> {
+				return pessoasJuridicas.stream().filter( pf -> pf.getId().equals(id)).findFirst().get();
+			}).collect(Collectors.toList()));
 			
 			protocoloDto.setOrgaosInteressados(dtoEnriquecido.getOrgaos(dp.getOrgaosInteressadosIds()));
 			protocoloDto.setLocalizacoesInteressadas(dtoEnriquecido.getLocalizacoes(dp.getLocalizacoesInteressadasIds()));
 			
 			//TODO alterar  
-			protocoloDto.setAssinantes(dp.getAssinantesIds().stream().map( id -> Usuario.builder().id(id).build()).collect(Collectors.toList()));
+			protocoloDto.setAssinantes(dp.getAssinantesIds().stream().map( id -> UsuarioDto.builder().id(id).build()).collect(Collectors.toList()));
 			
 			if (dp.getTipoDestino().equals(TipoDestino.ORGAO)) {
 				protocoloDto.setOrgaoDestino(dtoEnriquecido.getOrgao(destinoId));
@@ -138,12 +163,15 @@ public class DocumentoProtocoladoDomainService implements ProtocoloService {
 			if (dp.getTipoDestino().equals(TipoDestino.SETOR)) {
 				protocoloDto.setLocalizacaoDestino(dtoEnriquecido.getLocalizacao(destinoId));
 			}
+			
+			ProtocoloUtil.substituirCamposDinamicos(protocoloDto);
+			
 			messagingService.enviarParaFilaProtocolarDocumento(protocoloDto, correlationId.toString());
 		}
 	}
-	
+
 	private void validarExistenciaEntidadesPaeSuporte(PaeSuporteEnricherDto enrichedParams, ProtocolarDocumentoDto dto) {
-		/*
+		
 		DomainException de = new DomainException();
 		
 		if(!enrichedParams.contemAssuntoComId(dto.getAssuntoId())) {
@@ -188,6 +216,7 @@ public class DocumentoProtocoladoDomainService implements ProtocoloService {
 			}
 		}
 		
-		de.throwException();*/
+		de.throwException();
 	}
+	
 }

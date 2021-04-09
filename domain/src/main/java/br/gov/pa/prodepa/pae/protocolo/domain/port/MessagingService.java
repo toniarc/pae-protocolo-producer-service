@@ -1,6 +1,6 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.port;
 
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.ProtocoloDto;
 import br.gov.pa.prodepa.pae.suporte.client.PaeSuporteEnricherDto;
 
 public interface MessagingService {

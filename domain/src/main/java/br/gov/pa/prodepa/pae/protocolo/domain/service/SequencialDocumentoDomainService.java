@@ -3,10 +3,10 @@ package br.gov.pa.prodepa.pae.protocolo.domain.service;
 import java.time.LocalDate;
 import java.util.Date;
 
+import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.exception.SequencialDocumentoExistenteException;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.NumeroDocumentoReservado;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.SequencialDocumento;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Usuario;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.SequencialDocumentoRepository;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.TransactionalService;
 import br.gov.pa.prodepa.pae.suporte.client.EspecieBasicDto;
@@ -16,11 +16,11 @@ public class SequencialDocumentoDomainService implements SequencialDocumentoServ
 
 	private final SequencialDocumentoRepository repository;
 	
-	private final Usuario usuarioLogado;
+	private final UsuarioDto usuarioLogado;
 
 	private final TransactionalService transactionalService;
 	
-	public SequencialDocumentoDomainService(SequencialDocumentoRepository repository, Usuario usuarioLogado, 
+	public SequencialDocumentoDomainService(SequencialDocumentoRepository repository, UsuarioDto usuarioLogado, 
 			TransactionalService transactionalService) {
 		this.repository = repository;
 		this.usuarioLogado = usuarioLogado;

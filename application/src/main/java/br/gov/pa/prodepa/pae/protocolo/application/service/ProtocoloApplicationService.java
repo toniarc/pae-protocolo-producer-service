@@ -8,7 +8,6 @@ import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocolarDocumentoDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.ProtocoloService;
 
 @Component
-@Transactional(rollbackFor = Throwable.class)
 public class ProtocoloApplicationService {
 
 	private final ProtocoloService protocoloService;

@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.gov.pa.prodepa.pae.protocolo.client.dto.ProtocoloDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocolarDocumentoDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.MessagingService;
 import br.gov.pa.prodepa.pae.suporte.client.PaeSuporteEnricherDto;
 

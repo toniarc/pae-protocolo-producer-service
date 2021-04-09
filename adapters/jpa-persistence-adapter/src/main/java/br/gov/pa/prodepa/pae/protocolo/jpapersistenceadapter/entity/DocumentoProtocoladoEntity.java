@@ -22,9 +22,9 @@ import org.hibernate.annotations.TypeDef;
 
 import com.vladmihalcea.hibernate.type.array.ListArrayType;
 
-import br.gov.pa.prodepa.pae.protocolo.domain.model.OrigemDocumento;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.Prioridade;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoDestino;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.OrigemDocumento;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.Prioridade;
+import br.gov.pa.prodepa.pae.protocolo.client.dto.TipoDestino;
 import lombok.Getter;
 import lombok.Setter;
 
