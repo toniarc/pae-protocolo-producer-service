@@ -1,6 +1,7 @@
 package br.gov.pa.prodepa.pae.protocolo.adapter.webclient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -14,8 +15,8 @@ public class DocumentoWebClientAdapter implements PaeDocumentoService {
 	
 	private final RestTemplate restTemplate;
 	
-	//private String DOCUMENTO_SERVICE_HOST = "http://pae-documento-service-pae.apps.desenvolver.prodepa.pa.gov.br";
-	private String DOCUMENTO_SERVICE_HOST = "http://localhost:8083";
+	@Value("${documento.service.host}")
+	private String DOCUMENTO_SERVICE_HOST;
 	
 	@Autowired
 	public DocumentoWebClientAdapter() {

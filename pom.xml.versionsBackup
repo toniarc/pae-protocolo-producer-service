@@ -12,7 +12,7 @@
 
 	<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
 	<artifactId>pae-protocolo-producer-service</artifactId>
-	<version>1.0</version>
+	<version>1.0.0</version>
 	
 	<name>pae-protocolo-producer-service</name>
 	<description>Demo project for Spring Boot</description>

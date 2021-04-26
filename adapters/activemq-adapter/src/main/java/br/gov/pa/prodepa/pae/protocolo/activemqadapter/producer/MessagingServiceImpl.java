@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
+import org.springframework.jms.core.MessagePostProcessor;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,6 +37,17 @@ public class MessagingServiceImpl implements MessagingService{
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
+			
+			jmsTemplate.convertAndSend("protocolar-documento", protocoloDto, new MessagePostProcessor() {
+				
+				@Override
+				public Message postProcessMessage(Message message) throws JMSException {
+					message.setJMSCorrelationID(correlationId);
+					return message;
+				}
+			});
+			
+			/*
 			String dtoAsString = objectMapper.writeValueAsString(protocoloDto);
 			
 			jmsTemplate.send("protocolar-documento", new MessageCreator() {
@@ -45,7 +57,7 @@ public class MessagingServiceImpl implements MessagingService{
 					msg.setJMSCorrelationID(correlationId);
 					return msg;
 				}
-			});
+			});*/
 			
 			//this.jmsTemplate.convertAndSend("protocolar-documento", dtoAsString);
 		} catch (Exception e) {
@@ -60,6 +72,7 @@ public class MessagingServiceImpl implements MessagingService{
 
 	public String enriquecerModeloDadosSuporte(ProtocolarDocumentoDto dto) {
 		try {
+			
 			ObjectMapper objectMapper = new ObjectMapper();
 			String dtoAsString = objectMapper.writeValueAsString(dto);
 			

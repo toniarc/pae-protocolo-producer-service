@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,8 @@ public class NucleopaWebClientAdapter implements NucleopaService {
 
 	private final RestTemplate restTemplate;
 	
-	private String NUCLEOPA_SERVICE_HOST = "http://localhost:8085";
+	@Value("${nucleopa.service.host}")
+	private String NUCLEOPA_SERVICE_HOST;
 	
 	@Autowired
 	public NucleopaWebClientAdapter(RestTemplateBuilder restTemplateBuilder) {

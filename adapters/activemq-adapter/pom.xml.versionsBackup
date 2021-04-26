@@ -6,22 +6,23 @@
 	<parent>
 		<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
 		<artifactId>pae-protocolo-producer-service</artifactId>
-		<version>1.0</version>
+		<version>1.0.0</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>domain</artifactId>
+	<artifactId>activemq-adapter</artifactId>
 
 	<dependencies>
 
+		<!-- <dependency> <groupId>org.amqphub.spring</groupId> <artifactId>amqp-10-jms-spring-boot-starter</artifactId> 
+			<version>2.2.7.redhat-00002</version> </dependency> -->
+
 		<dependency>
-			<groupId>br.gov.pa.prodepa.pae-common</groupId>
-			<artifactId>pae-common-domain</artifactId>
-			<version>${version.pae.common.domain}</version>
+			<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
+			<artifactId>domain</artifactId>
+			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>br.gov.pa.prodepa.pae-common</groupId>
-			<artifactId>pae-suporte-client</artifactId>
-			<version>${version.pae.suporte.client}</version>
-		</dependency>
+		
 	</dependencies>
+
 </project>
