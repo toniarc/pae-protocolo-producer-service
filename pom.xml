@@ -19,11 +19,9 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<version.nucleopa.client>1.0</version.nucleopa.client>
-		<version.pae.protocolo.client>1.0</version.pae.protocolo.client>
 		<version.pae.common.domain>1.0</version.pae.common.domain>
-		<version.pae.suporte.client>1.0</version.pae.suporte.client>
 		<version.pae.common.rest>1.0</version.pae.common.rest>
+		<version.pae.common.rest.client>1.0</version.pae.common.rest.client>
 	</properties>
 
 	<dependencies>
@@ -47,26 +45,15 @@
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-jms</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>br.gov.pa.prodepa</groupId>
-			<artifactId>nucleopa-client</artifactId>
-			<version>${version.nucleopa.client}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>br.gov.pa.prodepa.pae-common</groupId>
-			<artifactId>pae-protocolo-client</artifactId>
-			<version>${version.pae.protocolo.client}</version>
-		</dependency>
+		
 	</dependencies>
 
 	<modules>
-		<module>domain</module>
-		<module>application</module>
-		<module>adapters/activemq-adapter</module>
-		<module>adapters/jpa-persistence-adapter</module>
-		<module>adapters/spring-webclient-adapter</module>
+		<module>pae-protocolo-producer-domain</module>
+		<module>pae-protocolo-producer-application</module>
+		<module>adapters/pae-protocolo-producer-activemq-adapter</module>
+		<module>adapters/pae-protocolo-producer-jpa-persistence-adapter</module>
+		<module>adapters/pae-protocolo-producer-spring-webclient-adapter</module>
 	</modules>
 	
 	<build>
