@@ -54,6 +54,7 @@
 		<module>adapters/pae-protocolo-producer-activemq-adapter</module>
 		<module>adapters/pae-protocolo-producer-jpa-persistence-adapter</module>
 		<module>adapters/pae-protocolo-producer-spring-webclient-adapter</module>
+		<module>pae-protocolo-springboot</module>
 	</modules>
 	
 	<build>

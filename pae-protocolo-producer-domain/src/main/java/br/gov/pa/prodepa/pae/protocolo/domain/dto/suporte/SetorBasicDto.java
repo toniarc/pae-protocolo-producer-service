@@ -10,6 +10,7 @@ public class SetorBasicDto {
 	private Long id;
 	private String nome;
 	private String sigla;
+	private Boolean protocoladora;
 	
 	@Override
 	public int hashCode() {

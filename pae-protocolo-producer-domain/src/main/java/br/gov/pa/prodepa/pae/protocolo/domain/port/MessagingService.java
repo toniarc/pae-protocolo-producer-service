@@ -9,6 +9,4 @@ public interface MessagingService {
 
 	PaeSuporteEnricherDto enriquecerModeloDadosSuporte(PaeSuporteEnricherDto enricher);
 
-	//String enriquecerModeloDadosSuporte(ProtocolarDocumentoDto dto);
-
 }

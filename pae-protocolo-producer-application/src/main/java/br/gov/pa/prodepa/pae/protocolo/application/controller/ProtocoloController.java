@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gov.pa.prodepa.pae.protocolo.application.service.ProtocoloApplicationService;
+import br.gov.pa.prodepa.pae.protocolo.application.service.DocumentoProtocoladoApplicationService;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocolarDocumentoDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloResponseDto;
 import reactor.core.publisher.Flux;
@@ -19,12 +19,12 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/protocolos")
 public class ProtocoloController {
 
-	private final ProtocoloApplicationService service;
+	private final DocumentoProtocoladoApplicationService service;
 	
 	private Publisher<Message<String>> jmsReactiveSource;
 	
 	@Autowired
-	public ProtocoloController(ProtocoloApplicationService service, Publisher<Message<String>> jmsReactiveSource) {
+	public ProtocoloController(DocumentoProtocoladoApplicationService service, Publisher<Message<String>> jmsReactiveSource) {
 		super();
 		this.service = service;
 		this.jmsReactiveSource = jmsReactiveSource;

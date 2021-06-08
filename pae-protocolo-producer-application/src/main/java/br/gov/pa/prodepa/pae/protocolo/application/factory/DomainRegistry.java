@@ -7,15 +7,20 @@ import org.springframework.context.annotation.Configuration;
 
 import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.DocumentoProtocoladoRepository;
-import br.gov.pa.prodepa.pae.protocolo.domain.port.MessagingService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.Html2PdfService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.NotificationMessageService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.NucleopaRestClient;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.ObjectStorageService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeDocumentoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeSuporteService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.ProtocoloProducerMessageService;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.ProtocoloRepository;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.SequencialDocumentoRepository;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.TransactionalService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.DocumentoProtocoladoDomainService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.InteressadoDomainService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.InteressadoService;
+import br.gov.pa.prodepa.pae.protocolo.domain.service.ProtocoloDomainServce;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.ProtocoloService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.SequencialDocumentoDomainService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.SequencialDocumentoService;
@@ -41,8 +46,18 @@ public class DomainRegistry {
 	
 	@Bean
 	public ProtocoloService criarProtocoloService() {
+		return new ProtocoloDomainServce(
+				applicationContext.getBean(NotificationMessageService.class),
+				applicationContext.getBean(ProtocoloRepository.class),
+				applicationContext.getBean(TransactionalService.class),
+				applicationContext.getBean(Html2PdfService.class),
+				applicationContext.getBean(ObjectStorageService.class));
+	}
+	
+	@Bean
+	public DocumentoProtocoladoDomainService criarProtocoloDomainService() {
 		return new DocumentoProtocoladoDomainService(
-				applicationContext.getBean(MessagingService.class),
+				applicationContext.getBean(ProtocoloProducerMessageService.class),
 				applicationContext.getBean(UsuarioDto.class),
 				applicationContext.getBean(SequencialDocumentoRepository.class),
 				applicationContext.getBean(PaeDocumentoService.class), 

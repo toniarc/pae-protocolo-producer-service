@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 import br.gov.pa.prodepa.pae.common.domain.exception.DomainException;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.documento.ModeloEstruturaBasicDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoDestino;
 
 public class ProtocoloUtil {
 
@@ -159,58 +158,6 @@ public class ProtocoloUtil {
 		}
 	}
 	
-	public static void validarCamposDinamicosUsadosNoDocumento(String conteudo, TipoDestino tipoDestino) {
-		
-		if(conteudo == null) {
-			return;
-		}
-		
-		Pattern pattern = Pattern.compile("(%24%7B([A-Z_]*)%7D)");
-		Matcher matcher = pattern.matcher(conteudo);
-		
-		DomainException de = new DomainException();
-		
-		while(matcher.find()) {
-			String campoDinamico = matcher.group(2);
-			
-			if(!campoDinamico.equals("DATA_PROTOCOLO") && !campoDinamico.equals("NUMERO_PROTOCOLO")) {
-				
-				if(!tipoDestino.equals(TipoDestino.ORGAO)) {
-					
-					if(campoDinamico.trim().equals("ORGAO_ORIGEM_NOME") ) {
-						de.addError("O campo dinamico 'ORGAO_ORIGEM_NOME' so pode ser usado quando o tipo de destino for 'SETOR'");
-					}
-
-					if(campoDinamico.trim().equals("ORGAO_DESTINO_SIGLA") ) {
-						de.addError("O campo dinamico 'ORGAO_DESTINO_SIGLA' so pode ser usado quando o tipo de destino for 'SETOR'");
-					}
-					
-					if(campoDinamico.trim().equals("ORGAO_DESTINO_NOME") ) {
-						de.addError("O campo dinamico 'ORGAO_DESTINO_NOME' so pode ser usado quando o tipo de destino for 'SETOR'");
-					}
-				}
-				
-				if(!tipoDestino.equals(TipoDestino.SETOR)) {
-					if(campoDinamico.trim().equals("SETOR_DESTINO_SIGLA") ) {
-						de.addError("O campo dinamico 'SETOR_DESTINO_SIGLA' so pode ser usado quando o tipo de destino for 'SETOR'");
-					}
-					
-					if(campoDinamico.trim().equals("SETOR_DESTINO_DESCRICAO") ) {
-						de.addError("O campo dinamico 'SETOR_DESTINO_DESCRICAO' so pode ser usado quando o tipo de destino for 'SETOR'");
-					}
-					if(campoDinamico.trim().equals("SETOR_DESTINO_ENDERECO") ) {
-						de.addError("O campo dinamico 'SETOR_DESTINO_ENDERECO' so pode ser usado quando o tipo de destino for 'SETOR'");
-					}
-				}
-				
-			}
-			
-		}
-		
-		de.throwException();
-		
-	}
-
 	public static String substituirCamposDinamicosProtocolo(String texto, ProtocoloDto protocoloDto) {
 		StringBuilder sb = new StringBuilder();
 		

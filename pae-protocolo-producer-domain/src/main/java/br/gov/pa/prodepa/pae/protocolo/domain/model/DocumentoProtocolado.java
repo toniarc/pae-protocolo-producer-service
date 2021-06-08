@@ -27,7 +27,8 @@ public class DocumentoProtocolado {
 	private Date dataCadastro;
 	private Prioridade prioridade;
 	private TipoDestino tipoDestino;
-	private List<Long> assinantesIds;
+	private List<Long> usuariosQueDevemAssinar;
+	private List<Long> usuariosQueJaAssinaram;
 
 	//private List<Long> orgaosDestinoIds;
 	//private List<Long> localizacoesDestinoIds;
@@ -43,6 +44,8 @@ public class DocumentoProtocolado {
 	private Long localizacaoOrigemId;
 	private Long orgaoOrigemId;
 	
+	private Boolean jaFoiTramitado;
+	
 	public static DocumentoProtocolado buildFrom(ProtocolarDocumentoDto dto) {
 		return DocumentoProtocolado.builder()
 		.especieId(dto.getEspecieId())
@@ -53,7 +56,7 @@ public class DocumentoProtocolado {
 		.complemento(dto.getComplemento())
 		.prioridade(dto.getPrioridade())
 		.tipoDestino(dto.getTipoDestino())
-		.assinantesIds(dto.getAssinantesIds())
+		.usuariosQueDevemAssinar(dto.getAssinantesIds())
 		.destinosIds(dto.getDestinosIds())
 		/*
 		.orgaosDestinoIds(dto.getTipoDestino().equals(TipoDestino.ORGAO) && dto.getDestinosIds() != null

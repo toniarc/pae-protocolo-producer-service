@@ -80,8 +80,12 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	private TipoDestino tipoDestino;
 	
 	@Type(type = "list-array")
-	@Column(name = "assinantes_ids", nullable = false)
-	private List<Long> assinantesIds;
+	@Column(name = "usuarios_que_devem_assinar", nullable = false)
+	private List<Long> usuariosQueDevemAssinar;
+	
+	@Type(type = "list-array")
+	@Column(name = "usuarios_que_ja_assinaram", nullable = false)
+	private List<Long> usuariosQueJaAssinaram;
 	
 	@Type(type = "list-array")
 	@Column(name = "destino_ids", nullable = false)
@@ -114,6 +118,9 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	
 	@Column(name = "orgao_origem_id")
 	private Long orgaoOrigemId;
+	
+	@Column(name = "ja_foi_tramitado")
+	private Boolean jaFoiTramitado;
 
 	public DocumentoProtocoladoEntity() {
 	}

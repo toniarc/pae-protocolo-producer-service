@@ -1,6 +1,7 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.pa.prodepa.pae.protocolo.domain.model.OrigemDocumento;
@@ -41,5 +42,27 @@ public class ProtocolarDocumentoDto implements Serializable {
 	private List<Long> destinosIds;
 		
 	private Long numeroReservadoId;
+	
+	public List<Long> getOrgaosIds(){
+		List<Long> orgaosIds = new ArrayList<Long>();
+		orgaosIds.add(orgaoOrigemId);
+		orgaosIds.addAll(interessadosOrgaosIds);
+		
+		if(tipoDestino.equals(TipoDestino.ORGAO)) {
+			orgaosIds.addAll(destinosIds);
+		}
+		return orgaosIds;
+	}
+	
+	public List<Long> getLocalizacoesIds() {
+		List<Long> localizacaoesIds = new ArrayList<Long>();
+		localizacaoesIds.addAll(interessadosLocalizacoesIds);
+		localizacaoesIds.add(localizacaoOrigemId);
+		
+		if(tipoDestino.equals(TipoDestino.SETOR)) {
+			localizacaoesIds.addAll(destinosIds);
+		}
+		return localizacaoesIds;
+	}
 	
 }

@@ -4,4 +4,3 @@ public enum TipoInteressado {
 
 	ORGAO, SETOR, PESSOA_FISICA, PESSOA_JURIDICA;
 }
-

@@ -12,7 +12,7 @@ import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaFisicaBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaJuridicaBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.AssuntoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.EspecieBasicDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoComEnderecoDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.OrigemDocumento;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.Prioridade;
@@ -39,18 +39,18 @@ public class ProtocoloDto implements Serializable {
 	private DocumentoBasicDto documento;
 	private DocumentoProtocoladoBasicDto documentoProtocolado;
 	private OrgaoPaeBasicDto orgaoDestino;
-	private LocalizacaoComEnderecoDto localizacaoDestino;
+	private LocalizacaoBasicDto localizacaoDestino;
 	
 	private UsuarioDto usuarioCadastro;
 	
 	private OrgaoPaeBasicDto orgaoOrigem;
-	private LocalizacaoComEnderecoDto localizacaoOrigem;
+	private LocalizacaoBasicDto localizacaoOrigem;
 	
 	//interessados
 	private List<PessoaFisicaBasicDto> interessadosPessoasFisicas;
 	private List<PessoaJuridicaBasicDto> interessadosPessoasJuricas;
 	private List<OrgaoPaeBasicDto> orgaosInteressados;
-	private List<LocalizacaoComEnderecoDto> localizacoesInteressadas;
+	private List<LocalizacaoBasicDto> localizacoesInteressadas;
 	
 	private List<UsuarioDto> assinantes;
 	

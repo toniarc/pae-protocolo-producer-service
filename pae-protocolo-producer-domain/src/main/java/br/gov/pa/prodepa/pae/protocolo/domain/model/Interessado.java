@@ -1,21 +1,25 @@
-package br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte;
+package br.gov.pa.prodepa.pae.protocolo.domain.model;
 
-import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioBasicDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LocalizacaoBasicDto {
+public class Interessado {
 
 	private Long id;
-	private UsuarioBasicDto responsavel;
+	private Protocolo protocolo;
+	private Long pessoaId;
+	private String nome;
+	private TipoInteressado tipoInteressado;
+	private String sigla;
+	private Long setorId;
 	
 	@Override
 	public int hashCode() {
@@ -32,7 +36,7 @@ public class LocalizacaoBasicDto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LocalizacaoBasicDto other = (LocalizacaoBasicDto) obj;
+		Interessado other = (Interessado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

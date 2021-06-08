@@ -1,5 +1,8 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte;
 
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,12 +11,19 @@ import lombok.ToString;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
 @ToString
 public class OrgaoPaeBasicDto {
 
 	private Long id;
 	private String sigla;
 	private String nome;
+	private String cnpj;
+	private String logo;
+	private String entradaProcesso;
+	private String saidaProcesso;
+	private LocalizacaoBasicDto localizacaoPadraoRecebimento;
+	private Date dataHabilitacao;
 	
 	public OrgaoPaeBasicDto(){
 	}
