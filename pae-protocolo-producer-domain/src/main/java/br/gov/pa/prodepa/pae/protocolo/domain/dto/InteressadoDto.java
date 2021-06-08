@@ -1,8 +1,8 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.dto;
 
-import br.gov.pa.prodepa.pae.common.domain.dto.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaFisicaBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaJuridicaBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.SetorBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoInteressado;
 import lombok.AllArgsConstructor;

@@ -30,7 +30,7 @@ public class SequencialDocumentoDomainService implements SequencialDocumentoServ
 	public SequencialDocumento criarNovaSequencia(Long especieId, Long localizacaoId) throws SequencialDocumentoExistenteException {
 		
 		EspecieBasicDto especie = new EspecieBasicDto(especieId, "");
-		LocalizacaoBasicDto localizacao = new LocalizacaoBasicDto(localizacaoId, "");
+		LocalizacaoBasicDto localizacao = LocalizacaoBasicDto.builder().id(localizacaoId).build();
 		
 		int ano = LocalDate.now().getYear();
 		Long sequencial = 1L;
@@ -66,7 +66,7 @@ public class SequencialDocumentoDomainService implements SequencialDocumentoServ
 	public SequencialDocumento buscarProximoSequencial(Long especieId, Long localizacaoId) {
 		
 		EspecieBasicDto especie = new EspecieBasicDto(especieId, ""); //TODO verificar se existe
-		LocalizacaoBasicDto localizacao = new LocalizacaoBasicDto(localizacaoId, ""); //TODO verificar se existe
+		LocalizacaoBasicDto localizacao = LocalizacaoBasicDto.builder().id(localizacaoId).build(); //TODO verificar se existe
 		
 		int ano = LocalDate.now().getYear();
 		

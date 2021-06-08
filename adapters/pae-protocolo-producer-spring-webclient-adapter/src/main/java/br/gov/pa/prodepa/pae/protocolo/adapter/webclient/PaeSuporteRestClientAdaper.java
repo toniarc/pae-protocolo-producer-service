@@ -1,5 +1,7 @@
 package br.gov.pa.prodepa.pae.protocolo.adapter.webclient;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -9,9 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import br.gov.pa.prodepa.pae.common.domain.dto.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.common.rest.client.exception.RestTemplateResponseErrorHandler;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ConsultaPaginadaDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.AssuntoBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.EspecieBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.SetorBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeSuporteService;
 
@@ -58,6 +63,30 @@ public class PaeSuporteRestClientAdaper implements PaeSuporteService{
 		String fooResourceUrl = PAE_SUPORTE_SERVICE_HOST + "/pae-suporte-service/setores/lista-setores-ativos-por-orgao-usuario" + params.toString();
 		ResponseEntity<ConsultaPaginadaDto<SetorBasicDto>> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<ConsultaPaginadaDto<SetorBasicDto>>() {});
 		return exchange.getBody();
+	}
+
+	@Override
+	public EspecieBasicDto buscarEspecie(Long especieId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AssuntoBasicDto buscarAssunto(Long assuntoId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrgaoPaeBasicDto> buscarOrgaos(List<Long> orgaosIds) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<LocalizacaoBasicDto> buscarLocalizacoes(List<Long> localizacaoesIds) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

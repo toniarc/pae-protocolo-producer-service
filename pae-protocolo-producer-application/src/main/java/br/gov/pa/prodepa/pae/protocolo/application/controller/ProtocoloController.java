@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.pa.prodepa.pae.protocolo.application.service.DocumentoProtocoladoApplicationService;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocolarDocumentoDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloResponseDto;
 import reactor.core.publisher.Flux;
 
 @RestController

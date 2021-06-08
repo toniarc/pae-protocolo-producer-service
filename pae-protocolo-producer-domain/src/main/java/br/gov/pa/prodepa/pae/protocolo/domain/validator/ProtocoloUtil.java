@@ -65,13 +65,13 @@ public class ProtocoloUtil {
 			}
 		}
 
-		//TODO ALTERAR
+		//TODO ALTERAR 
 		if (campoDinamico.trim().equals("BRASAO_ORGAO")) {
 			return uriEncode("<img src=\"\"> </img>");
 		}
 		
 		if(campoDinamico.trim().equals("HIERARQUIA_SETOR") ) {
-			return uriEncode(dto.getLocalizacaoOrigem().getNomeHierarquiaCompleta());
+			return uriEncode(dto.getLocalizacaoOrigem().getSetor().getNomeHierarquiaCompleta());
 		}
 		
 		if(campoDinamico.trim().equals("ESPECIE") ) {
@@ -91,15 +91,15 @@ public class ProtocoloUtil {
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_ORIGEM_SIGLA") ) {
-			return uriEncode(dto.getLocalizacaoOrigem().getSigla());
+			return uriEncode(dto.getLocalizacaoOrigem().getSetor().getSigla());
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_ORIGEM_DESCRICAO") ) {
-			return uriEncode(dto.getLocalizacaoOrigem().getNome());
+			return uriEncode(dto.getLocalizacaoOrigem().getSetor().getNome());
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_ORIGEM_ENDERECO") ) {
-			return uriEncode(dto.getLocalizacaoOrigem().formatarEndereco());
+			return uriEncode(dto.getLocalizacaoOrigem().getUnidade().getEndereco());
 		}
 		
 		if(campoDinamico.trim().equals("ORGAO_DESTINO_SIGLA") ) {
@@ -111,15 +111,15 @@ public class ProtocoloUtil {
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_DESTINO_SIGLA") ) {
-			return uriEncode(dto.getLocalizacaoDestino().getSigla());
+			return uriEncode(dto.getLocalizacaoDestino().getSetor().getSigla());
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_DESTINO_DESCRICAO") ) {
-			return uriEncode(dto.getLocalizacaoDestino().getNome());
+			return uriEncode(dto.getLocalizacaoDestino().getSetor().getNome());
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_DESTINO_ENDERECO") ) {
-			return uriEncode(dto.getLocalizacaoDestino().formatarEndereco());
+			return uriEncode(dto.getLocalizacaoDestino().getUnidade().getEndereco());
 		}
 		
 		if(campoDinamico.trim().equals("ASSUNTO_DESCRICAO") ) {

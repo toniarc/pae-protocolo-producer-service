@@ -10,6 +10,7 @@ public class SetorBasicDto {
 	private Long id;
 	private String nome;
 	private String sigla;
+	private String nomeHierarquiaCompleta;
 	private Boolean protocoladora;
 	
 	@Override

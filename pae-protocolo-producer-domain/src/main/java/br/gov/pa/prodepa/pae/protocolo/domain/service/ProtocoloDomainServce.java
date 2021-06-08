@@ -18,7 +18,7 @@ import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloResponseDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.documento.ModeloEstruturaBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaFisicaBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaJuridicaBasicDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoComEnderecoDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.exception.SequencialProtocoloExistenteException;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.Anexo;
@@ -185,10 +185,10 @@ public class ProtocoloDomainServce implements ProtocoloService {
 		}
 		
 		if(protocoloDto.getLocalizacoesInteressadas() != null) {
-			for(LocalizacaoComEnderecoDto pf : protocoloDto.getLocalizacoesInteressadas()) {
+			for(LocalizacaoBasicDto pf : protocoloDto.getLocalizacoesInteressadas()) {
 				Interessado interessado = Interessado.builder()
 				.pessoaId(pf.getId())
-				.nome(pf.getNome())
+				.nome(pf.getSetor().getNome())
 				.tipoInteressado(TipoInteressado.SETOR)
 				.build();
 				interessados.add(interessado);

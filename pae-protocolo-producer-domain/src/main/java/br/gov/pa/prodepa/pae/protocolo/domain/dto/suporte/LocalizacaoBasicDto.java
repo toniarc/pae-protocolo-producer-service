@@ -15,6 +15,8 @@ import lombok.Setter;
 public class LocalizacaoBasicDto {
 
 	private Long id;
+	private SetorBasicDto setor;
+	private UnidadeBasicDto unidade;
 	private UsuarioBasicDto responsavel;
 	
 	@Override

@@ -63,7 +63,8 @@ public class DomainRegistry {
 				applicationContext.getBean(PaeDocumentoService.class), 
 				applicationContext.getBean(DocumentoProtocoladoRepository.class),
 				applicationContext.getBean(SequencialDocumentoService.class),
-				applicationContext.getBean(NucleopaRestClient.class));
+				applicationContext.getBean(NucleopaRestClient.class),
+				applicationContext.getBean(PaeSuporteService.class));
 	}
 	
 	@Bean

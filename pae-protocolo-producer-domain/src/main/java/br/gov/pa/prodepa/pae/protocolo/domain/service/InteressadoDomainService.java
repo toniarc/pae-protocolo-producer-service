@@ -3,13 +3,13 @@ package br.gov.pa.prodepa.pae.protocolo.domain.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.gov.pa.prodepa.pae.common.domain.dto.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.common.domain.exception.DomainException;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ConsultaPaginadaDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.InteressadoDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.InteressadoSearchDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaFisicaBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.nucleopa.PessoaJuridicaBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.OrgaoPaeBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.SetorBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.TipoInteressado;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.NucleopaRestClient;
