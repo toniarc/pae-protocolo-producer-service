@@ -99,7 +99,7 @@ public class ProtocoloUtil {
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_ORIGEM_ENDERECO") ) {
-			return uriEncode(dto.getLocalizacaoOrigem().getUnidade().getEndereco());
+			return uriEncode(dto.getLocalizacaoOrigem().getUnidade().getEnderecoVO().formatar());
 		}
 		
 		if(campoDinamico.trim().equals("ORGAO_DESTINO_SIGLA") ) {
@@ -119,7 +119,7 @@ public class ProtocoloUtil {
 		}
 		
 		if(campoDinamico.trim().equals("SETOR_DESTINO_ENDERECO") ) {
-			return uriEncode(dto.getLocalizacaoDestino().getUnidade().getEndereco());
+			return uriEncode(dto.getLocalizacaoDestino().getUnidade().getEnderecoVO().formatar());
 		}
 		
 		if(campoDinamico.trim().equals("ASSUNTO_DESCRICAO") ) {

@@ -55,13 +55,17 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	@Column(name = "assunto_id", nullable = false)
 	private Long assuntoId;
 	
-	@Column(name = "municipio_id", nullable = false)
-	private Long municipioId;
+	@Column(name = "municipio_ibge", nullable = false)
+	private String municipioIbge;
 	
 	@Column(name = "documento_id")
 	private Long documentoId;
-	private Short ano;
-	private Long sequencial;
+
+	@Column(name = "ano_documento")
+	private Integer anoDocumento;
+
+	@Column(name = "numero_documento")
+	private Long numeroDocumento;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "origem_documento", nullable = false, length = 20)

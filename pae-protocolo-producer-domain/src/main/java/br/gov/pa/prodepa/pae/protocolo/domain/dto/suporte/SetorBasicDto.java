@@ -1,10 +1,12 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class SetorBasicDto {
 
 	private Long id;

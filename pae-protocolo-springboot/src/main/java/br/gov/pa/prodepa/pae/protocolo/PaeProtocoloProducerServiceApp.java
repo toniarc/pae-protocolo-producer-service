@@ -24,9 +24,8 @@ public class PaeProtocoloProducerServiceApp {
 				.id(3199L)
 				.nome("Antonio Junior")
 				.cpf("66810574204")
-				.orgao(new OrgaoPaeBasicDto(1L, "Prodepa", "Empresa de Tecnologia e comunicacao do Para", "05059613000118"))
+				.orgao(new OrgaoPaeBasicDto(35L, "Prodepa", "Empresa de Tecnologia e comunicacao do Para", "05059613000118"))
 				.build();
 	}
 
 }
-

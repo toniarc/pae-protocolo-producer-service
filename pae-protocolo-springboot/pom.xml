@@ -39,6 +39,12 @@
 			<artifactId>pae-protocolo-producer-application</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
+			<artifactId>pae-protocolo-producer-nutanix</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

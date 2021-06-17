@@ -51,6 +51,7 @@
 	<modules>
 		<module>pae-protocolo-producer-domain</module>
 		<module>pae-protocolo-producer-application</module>
+		<module>adapters/pae-protocolo-producer-nutanix</module>
 		<module>adapters/pae-protocolo-producer-activemq-adapter</module>
 		<module>adapters/pae-protocolo-producer-jpa-persistence-adapter</module>
 		<module>adapters/pae-protocolo-producer-spring-webclient-adapter</module>

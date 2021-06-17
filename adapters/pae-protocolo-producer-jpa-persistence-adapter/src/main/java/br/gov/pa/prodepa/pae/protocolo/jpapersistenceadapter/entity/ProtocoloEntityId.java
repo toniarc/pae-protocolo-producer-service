@@ -10,24 +10,24 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ProtocoloEntityId implements java.io.Serializable {
 
-	private short ano;
+	private short anoProtocolo;
 	private long numeroProtocolo;
 
 	public ProtocoloEntityId() {
 	}
 
-	public ProtocoloEntityId(short ano, long numeroProtocolo) {
-		this.ano = ano;
+	public ProtocoloEntityId(short anoProtocolo, long numeroProtocolo) {
+		this.anoProtocolo = anoProtocolo;
 		this.numeroProtocolo = numeroProtocolo;
 	}
 
-	@Column(name = "ano", nullable = false)
-	public short getAno() {
-		return this.ano;
+	@Column(name = "ano_protocolo", nullable = false)
+	public short getAnoProtocolo() {
+		return this.anoProtocolo;
 	}
 
-	public void setAno(short ano) {
-		this.ano = ano;
+	public void setAnoProtocolo(short anoProtocolo) {
+		this.anoProtocolo = anoProtocolo;
 	}
 
 	@Column(name = "numero_protocolo", nullable = false)
@@ -48,13 +48,13 @@ public class ProtocoloEntityId implements java.io.Serializable {
 			return false;
 		ProtocoloEntityId castOther = (ProtocoloEntityId) other;
 
-		return (this.getAno() == castOther.getAno()) && (this.getNumeroProtocolo() == castOther.getNumeroProtocolo());
+		return (this.getAnoProtocolo() == castOther.getAnoProtocolo()) && (this.getNumeroProtocolo() == castOther.getNumeroProtocolo());
 	}
 
 	public int hashCode() {
 		int result = 17;
 
-		result = 37 * result + this.getAno();
+		result = 37 * result + this.getAnoProtocolo();
 		result = 37 * result + (int) this.getNumeroProtocolo();
 		return result;
 	}

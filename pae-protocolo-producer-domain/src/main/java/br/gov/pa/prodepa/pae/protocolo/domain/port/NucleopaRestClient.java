@@ -1,5 +1,6 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.port;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,5 +21,7 @@ public interface NucleopaRestClient {
 
 	ConsultaPaginadaDto<PessoaJuridicaBasicDto> buscarPessoaJuridicaPorNomeOuCnpj(String nome, String cpfCnpj,
 			int pageSize, int pageNumber);
+
+	MunicipioBasicDto buscarMunicipioPorCodigoIbge(String codigoIbge);
 
 }

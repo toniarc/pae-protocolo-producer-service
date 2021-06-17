@@ -18,6 +18,7 @@ public class LocalizacaoBasicDto {
 	private SetorBasicDto setor;
 	private UnidadeBasicDto unidade;
 	private UsuarioBasicDto responsavel;
+	private Boolean ativo;
 	
 	@Override
 	public int hashCode() {

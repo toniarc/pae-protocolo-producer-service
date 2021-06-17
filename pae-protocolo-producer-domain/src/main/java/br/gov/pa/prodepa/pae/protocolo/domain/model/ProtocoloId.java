@@ -12,6 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProtocoloId {
-	private Integer ano;
+	private Integer anoProtocolo;
 	private Long numeroProtocolo;
 }

@@ -89,4 +89,11 @@ public class NucleopaRestClientAdapter implements NucleopaRestClient {
 		ResponseEntity<ConsultaPaginadaDto<PessoaJuridicaBasicDto>> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<ConsultaPaginadaDto<PessoaJuridicaBasicDto>>() {});
 		return exchange.getBody();
 	}
+
+	@Override
+	public MunicipioBasicDto buscarMunicipioPorCodigoIbge(String codigoIbge) {
+		String fooResourceUrl = NUCLEOPA_SERVICE_HOST + "/nucleopa-service/municipios/formato-basico/codigo-ibge/" + codigoIbge;
+		ResponseEntity<MunicipioBasicDto> response = restTemplate.getForEntity(fooResourceUrl, MunicipioBasicDto.class);
+		return response.getBody();
+	}
 }

@@ -17,7 +17,10 @@ public class ProtocoloConsumerMessageServiceImpl {
 	private ProtocoloService service;
 
 	@JmsListener(destination = "protocolar-documento")
-	public void processMessage(String json) {
+	public void processMessage(ProtocoloDto dto) {
+
+		service.protocolarDocumento(dto);
+		/*
 		ObjectMapper objectMapper = new ObjectMapper();
 		ProtocoloDto dto;
 		try {
@@ -25,6 +28,6 @@ public class ProtocoloConsumerMessageServiceImpl {
 			service.protocolarDocumento(dto);
 		} catch (JsonProcessingException e) {
 			throw new RuntimeException(e);
-		}
+		}*/
 	}
 }

@@ -57,7 +57,7 @@ public class AnexoEntity implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({ @JoinColumn(name = "ano_protocolo", referencedColumnName = "ano", nullable = false),
+	@JoinColumns({ @JoinColumn(name = "ano_protocolo", referencedColumnName = "ano_protocolo", nullable = false),
 			@JoinColumn(name = "numero_protocolo", referencedColumnName = "numero_protocolo", nullable = false) })
 	public ProtocoloEntity getProtocolo() {
 		return this.protocolo;

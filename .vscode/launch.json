@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch PaeProtocoloProducerServiceApp",
+            "request": "launch",
+            "mainClass": "br.gov.pa.prodepa.pae.protocolo.PaeProtocoloProducerServiceApp",
+            "projectName": "pae-protocolo-springboot",
+            "vmArgs": "-DHTML2PDF_SERVICE_URL=localhost -DNUCLEOPA_HOST=localhost -DPAE_DOCUMENTO_SERVICE_HOST=localhost -DACTIVEMQ_BROKER_URL=localhost -DACTIVEMQ_BROKER_PASSWORD=artemis -DACTIVEMQ_BROKER_USER=artemis -DNUTANIX_ENDPOINT_URL=http://poc-s3ntnx.prodepa.pa.gov.br -DNUTANIX_ACCESS_KEY=B6t10ZUFP9NazpXWNx12v0HsrhJHxUna -DNUTANIX_SECRET_KEY=qC0Y80NyEsjUkvJHIHu_NOBPbpsj-6Zz -DSEAD_PAE02_HOST=10.1.11.106 -DSEAD_PAE02_PASSWORD=p2a0e20 -DSEAD_PAE02_USER=sead_pae02_pae_apl -DPAE_SUPORTE_HOST=localhost"
+        }
+    ]
+}

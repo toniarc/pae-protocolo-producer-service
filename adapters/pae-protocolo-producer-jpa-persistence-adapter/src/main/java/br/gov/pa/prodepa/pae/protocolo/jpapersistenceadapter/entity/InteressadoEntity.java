@@ -58,7 +58,7 @@ public class InteressadoEntity implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({ @JoinColumn(name = "ano", referencedColumnName = "ano"),
+	@JoinColumns({ @JoinColumn(name = "ano_protocolo", referencedColumnName = "ano_protocolo"),
 			@JoinColumn(name = "numero_protocolo", referencedColumnName = "numero_protocolo") })
 	public ProtocoloEntity getProtocolo() {
 		return this.protocolo;

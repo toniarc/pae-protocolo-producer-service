@@ -1,5 +1,6 @@
 package br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,10 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
 public class EspecieBasicDto {
 
 	private Long id;
 	private String nome;
+	private Boolean geraProtocolo;
+	private Integer quantidadeDestinos;	
+	private Boolean ativo;
 	
 	public EspecieBasicDto(){
 	}

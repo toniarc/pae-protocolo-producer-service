@@ -49,15 +49,8 @@ public class ProtocoloDomainServce implements ProtocoloService {
 
 		Date now = new Date();
 		
-		SequencialProtolo sequencialProtolo = transactionalService.executarEmTransacaoSeparada( status -> buscarProximoSequencial());
-		
-		ProtocoloId id = ProtocoloId.builder()
-		.ano(sequencialProtolo.getAno())
-		.numeroProtocolo(sequencialProtolo.getSequencial())
-		.build();
-		
-		protocoloDto.setAnoProtocolo(id.getAno());
-		protocoloDto.setNumeroProtocolo(id.getNumeroProtocolo());
+		ProtocoloId id = gerarNumeroDeProtocolo(protocoloDto);
+
 		protocoloDto.setDataProtocolo(now);
 		
 		Protocolo protocolo = Protocolo.builder()
@@ -86,17 +79,49 @@ public class ProtocoloDomainServce implements ProtocoloService {
 		Anexo anexo = protocolo.getAnexos().get(0);
 		protocolo.setHashAnexos(anexo.getHashArquivo());
 		
+		sendNotification(protocoloDto, protocolo, anexo);
+
+		//TODO registrar fichamento
+		
+	}
+
+	private void sendNotification(ProtocoloDto protocoloDto, Protocolo protocolo, Anexo anexo) {
+		String successMessage = String.format("Protocolo %d/%d,  Protocolado com sucesso!", 
+			protocolo.getId().getAnoProtocolo(), protocolo.getId().getNumeroProtocolo());
+
+		String detailMessage = String.format("Documento %s - %d/%d - %s foi protocolado com sucesso com o Número %d/%d", 
+			protocoloDto.getEspecie().getNome(),
+			protocolo.getAnoDocumento(), 
+			protocolo.getNumeroDocumento(),
+			protocoloDto.getLocalizacaoDestino().getSetor().getSigla(),
+			protocolo.getId().getAnoProtocolo(), 
+			protocolo.getId().getNumeroProtocolo());
+
 		ProtocoloResponseDto protocoloSalvo = protocoloRepository.salvar(protocolo);
+		protocoloSalvo.setSuccessMessage(successMessage);
+		protocoloSalvo.setDetailMessage(detailMessage);
 		protocoloSalvo.setUsuarioId(protocoloDto.getUsuarioCadastro().getId());
 		protocoloSalvo.setFileStorageId(anexo.getS3StorageId());
 		
 		notificationService.send(protocoloSalvo);
+	}
+
+	private ProtocoloId gerarNumeroDeProtocolo(ProtocoloDto protocoloDto) {
+		SequencialProtolo sequencialProtolo = transactionalService.executarEmTransacaoSeparada( status -> buscarProximoSequencial());
 		
+		ProtocoloId id = ProtocoloId.builder()
+		.anoProtocolo(sequencialProtolo.getAno())
+		.numeroProtocolo(sequencialProtolo.getSequencial())
+		.build();
+		
+		protocoloDto.setAnoProtocolo(id.getAnoProtocolo());
+		protocoloDto.setNumeroProtocolo(id.getNumeroProtocolo());
+		return id;
 	}
 	
 	private List<Anexo> gerarAnexos(ProtocoloDto protocoloDto) {
 		
-		List<Anexo> anexos = new ArrayList<Anexo>(1);
+		List<Anexo> anexos = new ArrayList<>(1);
 
 		protocoloDto.getDocumento().setConteudo(ProtocoloUtil.substituirCamposDinamicosProtocolo(protocoloDto.getDocumento().getConteudo(), protocoloDto));
 		
@@ -129,7 +154,7 @@ public class ProtocoloDomainServce implements ProtocoloService {
 	
 	private Set<Assinatura> gerarAssinaturas(ProtocoloDto protocoloDto){
 		
-		Set<Assinatura> assinaturas = new HashSet<Assinatura>(protocoloDto.getAssinantes().size());
+		Set<Assinatura> assinaturas = new HashSet<>(protocoloDto.getAssinantes().size());
 		if(protocoloDto.getAssinantes() != null) {
 			for(UsuarioDto u : protocoloDto.getAssinantes()) {
 				Assinatura assinatura = Assinatura.builder()
@@ -149,7 +174,7 @@ public class ProtocoloDomainServce implements ProtocoloService {
 	
 	private List<Interessado> gerarInteressados(ProtocoloDto protocoloDto){
 		
-		List<Interessado> interessados = new ArrayList<Interessado>();
+		List<Interessado> interessados = new ArrayList<>();
 		if(protocoloDto.getInteressadosPessoasFisicas() != null) {
 			for(PessoaFisicaBasicDto pf : protocoloDto.getInteressadosPessoasFisicas()) {
 				Interessado interessado = Interessado.builder()

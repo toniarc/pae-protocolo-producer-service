@@ -17,11 +17,12 @@ public class DocumentoProtocolado {
 	private Long id;
 	private Long especieId;
 	private Long assuntoId;
-	private Long municipioId;
+	private String municipioIbge;
 	private Long documentoId;
 	
-	private Integer ano;
-	private Long sequencial;
+	private Integer anoDocumento;
+	private Long numeroDocumento;
+
 	private OrigemDocumento origemDocumento;
 	private String complemento;
 	private Date dataCadastro;
@@ -50,7 +51,7 @@ public class DocumentoProtocolado {
 		return DocumentoProtocolado.builder()
 		.especieId(dto.getEspecieId())
 		.assuntoId(dto.getAssuntoId())
-		.municipioId(dto.getMunicipioId())
+		.municipioIbge(dto.getMunicipioIbge())
 		.documentoId(dto.getDocumentoId())
 		.origemDocumento(dto.getOrigemDocumento())
 		.complemento(dto.getComplemento())

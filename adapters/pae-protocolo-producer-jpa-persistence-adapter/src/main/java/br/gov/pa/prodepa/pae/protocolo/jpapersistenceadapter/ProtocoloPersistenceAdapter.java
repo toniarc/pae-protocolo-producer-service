@@ -50,7 +50,7 @@ public class ProtocoloPersistenceAdapter implements ProtocoloRepository {
 		}
 		
 		repository.saveAndFlush(entity);
-		return ProtocoloResponseDto.builder().ano(protocolo.getId().getAno()).numero(protocolo.getId().getNumeroProtocolo()).build();
+		return ProtocoloResponseDto.builder().ano(protocolo.getId().getAnoProtocolo()).numero(protocolo.getId().getNumeroProtocolo()).build();
 	}
 
 	@Override

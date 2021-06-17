@@ -17,5 +17,6 @@ public class ProtocoloResponseDto {
 	private Long numero;
 	private Long usuarioId;
 	private String fileStorageId;
-	
+	private String successMessage;
+	private String detailMessage;
 }

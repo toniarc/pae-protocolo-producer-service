@@ -1,6 +1,7 @@
 package br.gov.pa.prodepa.pae.protocolo.adapter.webclient;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,26 +68,43 @@ public class PaeSuporteRestClientAdaper implements PaeSuporteService{
 
 	@Override
 	public EspecieBasicDto buscarEspecie(Long especieId) {
-		// TODO Auto-generated method stub
-		return null;
+		String fooResourceUrl = PAE_SUPORTE_SERVICE_HOST + "/pae-suporte-service/especies/" + especieId;
+		ResponseEntity<EspecieBasicDto> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, EspecieBasicDto.class);
+		return exchange.getBody();
 	}
 
 	@Override
 	public AssuntoBasicDto buscarAssunto(Long assuntoId) {
-		// TODO Auto-generated method stub
-		return null;
+		String fooResourceUrl = PAE_SUPORTE_SERVICE_HOST + "/pae-suporte-service/assuntos/" + assuntoId;
+		ResponseEntity<AssuntoBasicDto> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, AssuntoBasicDto.class);
+		return exchange.getBody();
 	}
 
 	@Override
 	public List<OrgaoPaeBasicDto> buscarOrgaos(List<Long> orgaosIds) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder params = new StringBuilder("?");
+		params.append("ids=" + String.join(",", orgaosIds.stream().map(id -> id.toString()).collect(Collectors.toList())));
+		
+		String fooResourceUrl = PAE_SUPORTE_SERVICE_HOST + "/pae-suporte-service/orgaos-pae/com-setor-padrao-e-responsavel" + params.toString();
+		ResponseEntity<List<OrgaoPaeBasicDto>> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<OrgaoPaeBasicDto>>() {});
+		return exchange.getBody();
 	}
 
 	@Override
 	public List<LocalizacaoBasicDto> buscarLocalizacoes(List<Long> localizacaoesIds) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder params = new StringBuilder("?");
+		params.append("ids=" + String.join(",", localizacaoesIds.stream().map(id -> id.toString()).collect(Collectors.toList())));
+		
+		String fooResourceUrl = PAE_SUPORTE_SERVICE_HOST + "/pae-suporte-service/localizacoes/formato-basico/pesquisas/com-endereco" + params.toString();
+		ResponseEntity<List<LocalizacaoBasicDto>> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<LocalizacaoBasicDto>>() {});
+		return exchange.getBody();
+	}
+
+	@Override
+	public List<LocalizacaoBasicDto> buscarLocalizacoesUsuarioAtivas(Long id) {
+		String fooResourceUrl = PAE_SUPORTE_SERVICE_HOST + "/pae-suporte-service/localizacoes/formato-basico/usuario-logado";
+		ResponseEntity<List<LocalizacaoBasicDto>> exchange = restTemplate.exchange(fooResourceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<LocalizacaoBasicDto>>() {});
+		return exchange.getBody();
 	}
 
 }

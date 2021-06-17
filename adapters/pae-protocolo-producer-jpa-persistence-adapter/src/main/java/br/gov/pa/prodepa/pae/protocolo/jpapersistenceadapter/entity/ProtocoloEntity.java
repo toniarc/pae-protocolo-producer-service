@@ -52,7 +52,7 @@ public class ProtocoloEntity implements java.io.Serializable {
 	}
 
 	@EmbeddedId
-	@AttributeOverrides({ @AttributeOverride(name = "ano", column = @Column(name = "ano", nullable = false)),
+	@AttributeOverrides({ @AttributeOverride(name = "anoProtocolo", column = @Column(name = "ano_protocolo", nullable = false)),
 			@AttributeOverride(name = "numeroProtocolo", column = @Column(name = "numero_protocolo", nullable = false)) })
 	public ProtocoloEntityId getId() {
 		return this.id;

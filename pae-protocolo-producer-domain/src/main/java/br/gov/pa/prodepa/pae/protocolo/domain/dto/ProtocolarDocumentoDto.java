@@ -18,7 +18,7 @@ public class ProtocolarDocumentoDto implements Serializable {
 
 	private Long especieId;
 	private Long assuntoId;
-	private Long municipioId;
+	private String municipioIbge;
 	private Long documentoId;
 	private OrigemDocumento origemDocumento;
 	private String complemento;

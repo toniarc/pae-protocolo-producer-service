@@ -25,4 +25,6 @@ public interface PaeSuporteService {
 
 	List<LocalizacaoBasicDto> buscarLocalizacoes(List<Long> localizacaoesIds);
 
+    List<LocalizacaoBasicDto> buscarLocalizacoesUsuarioAtivas(Long id);
+
 }
