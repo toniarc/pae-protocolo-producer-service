@@ -45,7 +45,7 @@ public class DocumentoProtocoladoDomainService implements DocumentoProtocoladoSe
 	private final SequencialDocumentoService sequencialDocumentoService;
 	private final NucleopaRestClient nucleopaService;
 	private final PaeSuporteService suporteSevice;
-	private final AuditoriaService auditoriaService;
+	//private final AuditoriaService auditoriaService;
 
 	// Passo 1: buscar origem do documento RN01
 	// Passo 2: buscar localizacoes do usuario (combo de localizacoes onde o documento sera protocolado)
