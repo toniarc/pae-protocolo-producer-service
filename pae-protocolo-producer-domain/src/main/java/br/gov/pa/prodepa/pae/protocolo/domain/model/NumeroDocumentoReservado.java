@@ -40,6 +40,15 @@ public class NumeroDocumentoReservado {
 		this.documentoProtocolado = DocumentoProtocolado.builder().id(documentoProtocoladoId).build();
 	}
 
+	public NumeroDocumentoReservado(Integer id, Integer ano, Long especieId, Long localizacaoId, Long sequencial) {
+		super();
+		this.id = id;
+		this.ano = ano;
+		this.especie = EspecieBasicDto.builder().id(especieId).build();
+		this.localizacao = LocalizacaoBasicDto.builder().id(localizacaoId).build();
+		this.sequencial = sequencial;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

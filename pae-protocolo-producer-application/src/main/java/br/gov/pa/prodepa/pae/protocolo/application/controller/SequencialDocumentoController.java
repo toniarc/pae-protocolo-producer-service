@@ -1,6 +1,9 @@
 package br.gov.pa.prodepa.pae.protocolo.application.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +26,10 @@ public class SequencialDocumentoController {
 	@PostMapping("/especie/{especieId}/localizacao/{localizacaoId}")
 	public NumeroDocumentoReservado reservarNumeroDocumento(@PathVariable("especieId") Long especieId, @PathVariable("localizacaoId") Long localizacaoId) {
 		return service.reservarNumeroDocumento(especieId, localizacaoId);
+	}
+
+	@GetMapping("/especie/{especieId}/localizacao/{localizacaoId}")
+	public List<NumeroDocumentoReservado> listarNumerosReservados(@PathVariable("especieId") Long especieId, @PathVariable("localizacaoId") Long localizacaoId) {
+		return service.listarNumerosReservados(especieId, localizacaoId);
 	}
 }

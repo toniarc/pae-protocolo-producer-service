@@ -44,7 +44,7 @@ public class ProtocolarDocumentoDto implements Serializable {
 	private Long numeroReservadoId;
 	
 	public List<Long> getOrgaosIds(){
-		List<Long> orgaosIds = new ArrayList<Long>();
+		List<Long> orgaosIds = new ArrayList<>();
 		orgaosIds.add(orgaoOrigemId);
 		orgaosIds.addAll(interessadosOrgaosIds);
 		

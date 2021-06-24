@@ -1,5 +1,7 @@
 package br.gov.pa.prodepa.pae.protocolo.application.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,5 +21,9 @@ public class SequencialDocumentoApplicationService {
 	public NumeroDocumentoReservado reservarNumeroDocumento(Long especieId, Long localizacaoId) {
 		return service.reservarNumeroDocumento(especieId, localizacaoId);
 	}
+
+    public List<NumeroDocumentoReservado> listarNumerosReservados(Long especieId, Long localizacaoId) {
+        return service.listarNumerosReservados(especieId, localizacaoId);
+    }
 
 }

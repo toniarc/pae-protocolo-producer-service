@@ -1,6 +1,7 @@
 package br.gov.pa.prodepa.pae.protocolo.jpapersistenceadapter.entity;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,22 +9,20 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "localizacao", schema = "pae")
-public class LocalizacaoEntity {
+public class LocalizacaoEntity implements Serializable {
 
 	@Id
 	private Long id;
-	private String nome;
-	
-	@Column(name = "nome_hierarquia_completa")
-	private String nomeHierarquiaCompleta;
 	
 	@Override
 	public int hashCode() {

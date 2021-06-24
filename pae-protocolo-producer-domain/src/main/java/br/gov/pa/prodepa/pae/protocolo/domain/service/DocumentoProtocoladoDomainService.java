@@ -159,7 +159,8 @@ public class DocumentoProtocoladoDomainService implements DocumentoProtocoladoSe
 
 			if (dp.getTipoDestino().equals(TipoDestino.SETOR)) {
 				LocalizacaoBasicDto localizacaoDestino = getLocalizacao(localizacoes, destinoId);
-				protocoloDto.setOrgaoDestino(localizacaoDestino.getUnidade().getOrgao());
+				OrgaoPaeBasicDto orgaoDestino = getOrgao(orgaos, localizacaoDestino.getUnidade().getOrgao().getId());
+				protocoloDto.setOrgaoDestino(orgaoDestino);
 				protocoloDto.setLocalizacaoDestino(localizacaoDestino);
 			}
 
@@ -177,8 +178,7 @@ public class DocumentoProtocoladoDomainService implements DocumentoProtocoladoSe
 			dp.setAnoDocumento(sequencial.getAno());
 			dp.setNumeroDocumento(sequencial.getSequencial());
 		} else {
-			NumeroDocumentoReservado numeroReservado = sequencialRepository
-					.buscarNumeroReservado(dto.getNumeroReservadoId());
+			NumeroDocumentoReservado numeroReservado = sequencialRepository.buscarNumeroReservado(dto.getNumeroReservadoId());
 			if (numeroReservado.getDocumentoProtocolado() != null) {
 				throw new DomainException("Esse número de documento já foi protocolado");
 			}

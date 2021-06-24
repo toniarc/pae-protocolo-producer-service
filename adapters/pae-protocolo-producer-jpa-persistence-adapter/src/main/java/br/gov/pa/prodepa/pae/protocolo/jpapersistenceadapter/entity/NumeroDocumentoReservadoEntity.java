@@ -50,11 +50,11 @@ public class NumeroDocumentoReservadoEntity implements java.io.Serializable {
 	private Long especieId;
 	
 	@ManyToOne
-	@JoinColumn(name = "localizacao_usuario_id", nullable = false, insertable = false, updatable = false)
-	private LocalizacaoEntity localizacaoUsuario;
+	@JoinColumn(name = "localizacao_id", nullable = false, insertable = false, updatable = false)
+	private LocalizacaoEntity localizacao;
 	
-	@Column(name = "localizacao_usuario_id")
-	private Long localizacaoUsuarioId;
+	@Column(name = "localizacao_id")
+	private Long localizacaoId;
 	
 	@Column(name = "manut_usuario_id", nullable = false)
 	private Long manutUsuarioId;

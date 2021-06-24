@@ -2,6 +2,7 @@ package br.gov.pa.prodepa.pae.protocolo.domain.service;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.EspecieBasicDto;
@@ -100,5 +101,10 @@ public class SequencialDocumentoDomainService implements SequencialDocumentoServ
 		}
 		
 		return sequenciaDocumento;
+	}
+
+	@Override
+	public List<NumeroDocumentoReservado> listarNumerosReservados(Long especieId, Long localizacaoId) {
+		return repository.listarNumerosReservados(especieId, localizacaoId);
 	}
 }
