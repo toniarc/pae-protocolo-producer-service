@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.ReservaNumeroDocumentoDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.EspecieBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.exception.SequencialDocumentoExistenteException;
@@ -39,16 +40,17 @@ public class SequencialDocumentoDomainService implements SequencialDocumentoServ
 		return new SequencialDocumento(ano, especie, localizacao, sequencial);
 	}
 	
-	public NumeroDocumentoReservado reservarNumeroDocumento(Long especieId, Long localizacaoId) {
+	public NumeroDocumentoReservado reservarNumeroDocumento(ReservaNumeroDocumentoDto dto) {
 		return transactionalService.executarEmTransacaoSeparada(status -> {
 			
-			SequencialDocumento sequencialDocumento = buscarProximoSequencial(especieId, localizacaoId);
+			SequencialDocumento sequencialDocumento = buscarProximoSequencial(dto.getEspecieId(), dto.getLocalizacaoId());
 			
 			NumeroDocumentoReservado reserva = NumeroDocumentoReservado.builder()
 					.ano(sequencialDocumento.getAno())
 					.localizacao(sequencialDocumento.getLocalizacao())
 					.especie(sequencialDocumento.getEspecie())
 					.sequencial(sequencialDocumento.getSequencial())
+					.motivo(dto.getMotivo())
 					.manutData(new Date())
 					.manutUsuarioId(usuarioLogado.getId())
 					.build();
@@ -82,6 +84,11 @@ public class SequencialDocumentoDomainService implements SequencialDocumentoServ
 			 * Por fim, retorna o valor atual da sequencia
 			 */
 			Long sequencial = repository.buscarProximoSequencial(ano, especieId, localizacaoId);
+
+			if(sequencial == null){
+				return null;
+			}
+
 			return new SequencialDocumento(ano, especie, localizacao, sequencial);
 		});
 		

@@ -55,6 +55,8 @@ public class NumeroDocumentoReservadoEntity implements java.io.Serializable {
 	
 	@Column(name = "localizacao_id")
 	private Long localizacaoId;
+
+	private String motivo;
 	
 	@Column(name = "manut_usuario_id", nullable = false)
 	private Long manutUsuarioId;

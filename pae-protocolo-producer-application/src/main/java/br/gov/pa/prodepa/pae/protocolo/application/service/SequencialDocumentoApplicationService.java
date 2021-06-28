@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.ReservaNumeroDocumentoDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.NumeroDocumentoReservado;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.SequencialDocumentoService;
 
@@ -18,8 +19,8 @@ public class SequencialDocumentoApplicationService {
 		this.service = service;
 	}
 	
-	public NumeroDocumentoReservado reservarNumeroDocumento(Long especieId, Long localizacaoId) {
-		return service.reservarNumeroDocumento(especieId, localizacaoId);
+	public NumeroDocumentoReservado reservarNumeroDocumento(ReservaNumeroDocumentoDto dto) {
+		return service.reservarNumeroDocumento(dto);
 	}
 
     public List<NumeroDocumentoReservado> listarNumerosReservados(Long especieId, Long localizacaoId) {

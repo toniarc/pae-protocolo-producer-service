@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.EspecieBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.exception.SequencialDocumentoExistenteException;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.DocumentoProtocolado;
 import br.gov.pa.prodepa.pae.protocolo.domain.model.NumeroDocumentoReservado;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.SequencialDocumentoRepository;
 import br.gov.pa.prodepa.pae.protocolo.jpapersistenceadapter.entity.NumeroDocumentoReservadoEntity;
@@ -55,6 +54,7 @@ public class SequenialDocumentoPersistenceAdapter implements SequencialDocumento
 				.especieId(reserva.getEspecie().getId())
 				.localizacaoId(reserva.getLocalizacao().getId())
 				.sequencial(reserva.getSequencial())
+				.motivo(reserva.getMotivo())
 				.manutData(reserva.getManutData())
 				.manutUsuarioId(reserva.getManutUsuarioId())
 				.build();

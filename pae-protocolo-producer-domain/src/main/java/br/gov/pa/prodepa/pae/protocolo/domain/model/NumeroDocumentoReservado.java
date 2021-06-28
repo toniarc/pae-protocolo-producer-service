@@ -22,6 +22,7 @@ public class NumeroDocumentoReservado {
 	private EspecieBasicDto especie;
 	private LocalizacaoBasicDto localizacao;
 	private Long sequencial;
+	private String motivo;
 	
 	private Long manutUsuarioId;
 	private Date manutData;
