@@ -15,4 +15,8 @@ public class ProtocoloApplicationService {
 	public void protocolarDocumento(ProtocoloDto dto) {
 		protocoloService.protocolarDocumento(dto);
 	}
+
+	public boolean jaExisteSequenciaDeProtocoloIniciada() {
+		return protocoloService.jaExisteSequenciaDeProtocoloIniciada();
+	}
 }

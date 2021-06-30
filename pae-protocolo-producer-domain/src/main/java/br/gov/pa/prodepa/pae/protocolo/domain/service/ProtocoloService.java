@@ -6,4 +6,6 @@ public interface ProtocoloService {
 
 	void protocolarDocumento(ProtocoloDto protocoloDto);
 
+    boolean jaExisteSequenciaDeProtocoloIniciada();
+
 }

@@ -11,4 +11,6 @@ public interface ProtocoloRepository {
 
 	void criarSequencia(int ano, Long sequencial);
 
+    boolean jaExisteSequenciaDeProtocoloIniciada();
+
 }

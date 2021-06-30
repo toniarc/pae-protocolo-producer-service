@@ -299,6 +299,11 @@ public class ProtocoloDomainServce implements ProtocoloService {
 		byte[] hash = digest.digest(file);
 		return bytesToHex(hash);
 	}
+
+	@Override
+	public boolean jaExisteSequenciaDeProtocoloIniciada() {
+		return protocoloRepository.jaExisteSequenciaDeProtocoloIniciada();
+	}
 	
 	
 }

@@ -85,4 +85,9 @@ public class ProtocoloPersistenceAdapter implements ProtocoloRepository {
 		sequencialProtocoloRepository.insert(ano, sequencial);
 	}
 
+	@Override
+	public boolean jaExisteSequenciaDeProtocoloIniciada() {
+		return sequencialProtocoloRepository.count() > 0;
+	}
+
 }
