@@ -11,6 +11,7 @@ import org.springframework.jms.core.MessagePostProcessor;
 import org.springframework.stereotype.Component;
 
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.model.DocumentoProtocolado;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.ProtocoloProducerMessageService;
 
 @Component
@@ -39,5 +40,26 @@ public class ProtocoloProducerMessageServiceImpl implements ProtocoloProducerMes
 			throw new RuntimeException(e);
 		}
 		
+	}
+
+	@Override
+	public void enviarParaFilaDaCaixaDeEntrada(DocumentoProtocolado documentoProtocolado, String correlationId) {
+		try {
+			
+			jmsTemplate.convertAndSend("caixa-entrada.documentos-nao-tramimtados", documentoProtocolado, new MessagePostProcessor() {
+				@Override
+				public Message postProcessMessage(Message message) throws JMSException {
+					message.setJMSCorrelationID(correlationId);
+					return message;
+				}
+			});
+			
+		} catch (Exception e) {
+			if(e.getCause().getCause() instanceof ConnectException) {
+				throw new RuntimeException("Nao foi possivel contar-se ao broker jms", e);
+			}
+			
+			throw new RuntimeException(e);
+		}
 	}
 }

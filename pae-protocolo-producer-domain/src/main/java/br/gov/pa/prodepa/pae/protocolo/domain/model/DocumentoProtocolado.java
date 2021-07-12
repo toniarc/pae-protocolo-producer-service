@@ -25,7 +25,6 @@ public class DocumentoProtocolado {
 
 	private OrigemDocumento origemDocumento;
 	private String complemento;
-	private Date dataCadastro;
 	private Prioridade prioridade;
 	private TipoDestino tipoDestino;
 	private List<Long> usuariosQueDevemAssinar;
@@ -42,10 +41,17 @@ public class DocumentoProtocolado {
 	private List<Long> pessoasJuridicasInteressadasIds;
 	private List<Long> orgaosInteressadosIds;
 	private List<Long> localizacoesInteressadasIds;
-	private Long localizacaoOrigemId;
-	private Long orgaoOrigemId;
 	
+	private Long orgaoOrigemId;
+	private Long localizacaoOrigemId;
+
 	private Boolean jaFoiTramitado;
+
+	private Long criadoPor;
+	private Date criadoEm;
+
+	private Long atualizadoPor;
+	private Date atualizadoEm;
 	
 	public static DocumentoProtocolado buildFrom(ProtocolarDocumentoDto dto) {
 		return DocumentoProtocolado.builder()

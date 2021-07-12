@@ -126,6 +126,18 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	@Column(name = "ja_foi_tramitado")
 	private Boolean jaFoiTramitado;
 
+	@Column(name = "criado_por")
+	private Long criadoPor;
+
+	@Column(name = "criado_em")
+	private Date criadoEm;
+
+	@Column(name = "atualizado_por")
+	private Long atualizadoPor;
+
+	@Column(name = "atualizado_em")
+	private Date atualizadoEm;
+
 	public DocumentoProtocoladoEntity() {
 	}
 
