@@ -136,7 +136,7 @@ public class ProtocoloUtil {
 		}
 		
 		if(campoDinamico.trim().equals("DATA_DOCUMENTO") ) {
-			return uriEncode(sdf.format(dto.getDocumentoProtocolado().getDataCadastro()));
+			return uriEncode(sdf.format(dto.getDocumentoProtocolado().getCriadoEm()));
 		}
 		
 		if(campoDinamico.trim().equals("DATA_PROTOCOLO") ) {

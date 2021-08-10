@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,6 +19,8 @@ import javax.persistence.Table;
 @Table(name = "interessado", schema = "pae")
 public class InteressadoEntity implements java.io.Serializable {
 
+	private static final long serialVersionUID = -3939636097671376964L;
+	
 	private Long id;
 	private ProtocoloEntity protocolo;
 	private Long pessoaId;
@@ -58,8 +59,8 @@ public class InteressadoEntity implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({ @JoinColumn(name = "ano_protocolo", referencedColumnName = "ano_protocolo"),
-			@JoinColumn(name = "numero_protocolo", referencedColumnName = "numero_protocolo") })
+	@JoinColumn(name = "ano_protocolo", referencedColumnName = "ano_protocolo")
+	@JoinColumn(name = "numero_protocolo", referencedColumnName = "numero_protocolo")
 	public ProtocoloEntity getProtocolo() {
 		return this.protocolo;
 	}

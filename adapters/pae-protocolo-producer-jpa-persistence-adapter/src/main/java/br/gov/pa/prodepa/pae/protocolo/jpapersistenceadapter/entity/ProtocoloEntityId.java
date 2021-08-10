@@ -10,6 +10,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ProtocoloEntityId implements java.io.Serializable {
 
+	private static final long serialVersionUID = -3646650670049391489L;
+	
 	private short anoProtocolo;
 	private long numeroProtocolo;
 
@@ -52,7 +54,7 @@ public class ProtocoloEntityId implements java.io.Serializable {
 	}
 
 	public int hashCode() {
-		int result = 17;
+		var result = 17;
 
 		result = 37 * result + this.getAnoProtocolo();
 		result = 37 * result + (int) this.getNumeroProtocolo();

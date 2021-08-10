@@ -23,6 +23,8 @@ import javax.persistence.TemporalType;
 @Table(name = "assinatura", schema = "pae")
 public class AssinaturaEntity implements java.io.Serializable {
 
+	private static final long serialVersionUID = 7466639861818599890L;
+	
 	private int id;
 	private AnexoEntity anexo;
 	private Long usuarioAssinanteId;

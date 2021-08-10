@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.gov.pa.prodepa.pae.common.domain.dto.UsuarioDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.ControleAcessoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.DocumentoProtocoladoRepository;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.Html2PdfService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.NotificationMessageService;
@@ -64,7 +65,8 @@ public class DomainRegistry {
 				applicationContext.getBean(DocumentoProtocoladoRepository.class),
 				applicationContext.getBean(SequencialDocumentoService.class),
 				applicationContext.getBean(NucleopaRestClient.class),
-				applicationContext.getBean(PaeSuporteService.class));
+				applicationContext.getBean(PaeSuporteService.class),
+				applicationContext.getBean(ControleAcessoService.class));
 	}
 	
 	@Bean

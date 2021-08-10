@@ -14,6 +14,7 @@ import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.AssuntoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.EspecieBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.LocalizacaoBasicDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.suporte.OrgaoPaeBasicDto;
+import br.gov.pa.prodepa.pae.protocolo.domain.port.ControleAcessoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeDocumentoService;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.PaeSuporteService;
 import lombok.Getter;
@@ -33,8 +34,9 @@ public class ProtocoloCache {
     List<PessoaFisicaBasicDto> pessoasFisicas;
     List<PessoaJuridicaBasicDto> pessoasJuridicas;
     MunicipioBasicDto municipio;
+    List<UsuarioDto> usuarios;
 
-    public ProtocoloCache(PaeSuporteService suporteService, PaeDocumentoService documentoService, ProtocolarDocumentoDto dto, UsuarioDto usuarioLogado){
+    public ProtocoloCache(PaeSuporteService suporteService, PaeDocumentoService documentoService, ControleAcessoService controleAcessoService, ProtocolarDocumentoDto dto, UsuarioDto usuarioLogado){
         especie = suporteService.buscarEspecie(dto.getEspecieId());
 		assunto = suporteService.buscarAssunto(dto.getAssuntoId());
 		orgaos = suporteService.buscarOrgaos(dto.getOrgaosIds());
@@ -44,6 +46,8 @@ public class ProtocoloCache {
         documento = documentoService.buscarDocumentoPorId(dto.getDocumentoId());
 		documento.getModeloConteudo()
 				.setModeloEstrutura(documentoService.buscarModeloEstruturaPorId(documento.getModeloConteudo().getId()));
+
+        usuarios = controleAcessoService.buscarUsuarios(dto.getAssinantesIds());
     }
 
     public PessoaFisicaBasicDto getPessoaFisica(Long id){
@@ -85,4 +89,22 @@ public class ProtocoloCache {
             .filter(a -> ids.contains(a.getId()))
             .collect(Collectors.toList());
 	}
+
+    public List<UsuarioDto> getUsuarios(List<Long> ids) {
+        return usuarios.stream()
+            .filter(a -> ids.contains(a.getId()))
+            .collect(Collectors.toList());
+    }
+
+    public List<PessoaFisicaBasicDto> getPessoasFisicas(List<Long> ids) {
+        return pessoasFisicas.stream()
+            .filter(a -> ids.contains(a.getId()))
+            .collect(Collectors.toList());
+    }
+
+    public List<PessoaJuridicaBasicDto> getPessoasJuridicas(List<Long> ids) {
+        return pessoasJuridicas.stream()
+            .filter(a -> ids.contains(a.getId()))
+            .collect(Collectors.toList());
+    }
 }

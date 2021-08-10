@@ -42,9 +42,6 @@ public class ProtocoloProducerJmsConfig {
 
 	@Bean
 	public MessageConverter jacksonJmsMessageConverter() {
-		
-		System.out.println("################ CREATE A MESSAGE CONVERTER ##################");
-		
 		MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
 		converter.setTargetType(MessageType.TEXT);
 		converter.setTypeIdPropertyName("_type");

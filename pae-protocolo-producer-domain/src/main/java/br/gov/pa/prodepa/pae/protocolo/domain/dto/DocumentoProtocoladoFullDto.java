@@ -41,19 +41,16 @@ public class DocumentoProtocoladoFullDto {
 	private List<UsuarioDto> usuariosQueDevemAssinar;
 	private List<UsuarioDto> usuariosQueJaAssinaram;
 
-	//private List<Long> orgaosDestinoIds;
-	//private List<Long> localizacoesDestinoIds;
-	
-	private List<ProtocoloDto> protocolos;
+	private List<DestinoProtocoloDto> destinos;
 
 	private String conteudoDocumento;
 	private Long modeloConteudoId;
-	private List<PessoaFisicaBasicDto> pessoasFisicasInteressadasIds;
-	private List<PessoaJuridicaBasicDto> pessoasJuridicasInteressadasIds;
-	private List<OrgaoPaeBasicDto> orgaosInteressadosIds;
-	private List<LocalizacaoBasicDto> localizacoesInteressadasIds;
-	private LocalizacaoBasicDto localizacaoOrigemId;
-	private OrgaoPaeBasicDto orgaoOrigemId;
+	private List<PessoaFisicaBasicDto> pessoasFisicasInteressadas;
+	private List<PessoaJuridicaBasicDto> pessoasJuridicasInteressadas;
+	private List<OrgaoPaeBasicDto> orgaosInteressados;
+	private List<LocalizacaoBasicDto> localizacoesInteressadas;
+	private LocalizacaoBasicDto localizacaoOrigem;
+	private OrgaoPaeBasicDto orgaoOrigem;
 	
 	private Boolean jaFoiTramitado;
 

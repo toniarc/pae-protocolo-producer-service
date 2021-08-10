@@ -10,6 +10,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class SequencialDocumentoEntityId implements java.io.Serializable {
 
+	private static final long serialVersionUID = -3128937692809536367L;
+	
 	private int ano;
 	private long especieId;
 	private long localizacaoId;
@@ -64,7 +66,7 @@ public class SequencialDocumentoEntityId implements java.io.Serializable {
 	}
 
 	public int hashCode() {
-		int result = 17;
+		var result = 17;
 
 		result = 37 * result + this.getAno();
 		result = 37 * result + (int) this.getEspecieId();

@@ -14,8 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -72,10 +70,6 @@ public class DocumentoProtocoladoEntity implements Serializable {
 	private OrigemDocumento origemDocumento;
 	
 	private String complemento;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "data_cadastro", nullable = false, length = 13)
-	private Date dataCadastro;
 	
 	@Enumerated(EnumType.STRING)
 	private Prioridade prioridade;

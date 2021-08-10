@@ -18,5 +18,5 @@ public class DocumentoProtocoladoBasicDto {
 	private Long id;
 	private Integer ano;
 	private Long numero;
-	private Date dataCadastro;
+	private Date criadoEm;
 }

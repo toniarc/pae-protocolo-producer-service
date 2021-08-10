@@ -21,13 +21,15 @@ import lombok.Setter;
 @Table(name = "localizacao", schema = "pae")
 public class LocalizacaoEntity implements Serializable {
 
+	private static final long serialVersionUID = 5789089900527008402L;
+	
 	@Id
 	private Long id;
 	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final var prime = 31;
+		var result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}

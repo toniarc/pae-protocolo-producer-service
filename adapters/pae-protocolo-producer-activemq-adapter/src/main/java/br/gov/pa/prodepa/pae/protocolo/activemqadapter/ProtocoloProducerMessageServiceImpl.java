@@ -10,8 +10,8 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessagePostProcessor;
 import org.springframework.stereotype.Component;
 
+import br.gov.pa.prodepa.pae.protocolo.domain.dto.DocumentoProtocoladoFullDto;
 import br.gov.pa.prodepa.pae.protocolo.domain.dto.ProtocoloDto;
-import br.gov.pa.prodepa.pae.protocolo.domain.model.DocumentoProtocolado;
 import br.gov.pa.prodepa.pae.protocolo.domain.port.ProtocoloProducerMessageService;
 
 @Component
@@ -43,7 +43,7 @@ public class ProtocoloProducerMessageServiceImpl implements ProtocoloProducerMes
 	}
 
 	@Override
-	public void enviarParaFilaDaCaixaDeEntrada(DocumentoProtocolado documentoProtocolado, String correlationId) {
+	public void enviarParaFilaDaCaixaDeEntrada(DocumentoProtocoladoFullDto documentoProtocolado, String correlationId) {
 		try {
 			
 			jmsTemplate.convertAndSend("caixa-entrada.documentos-nao-tramimtados", documentoProtocolado, new MessagePostProcessor() {
@@ -62,4 +62,5 @@ public class ProtocoloProducerMessageServiceImpl implements ProtocoloProducerMes
 			throw new RuntimeException(e);
 		}
 	}
+
 }
