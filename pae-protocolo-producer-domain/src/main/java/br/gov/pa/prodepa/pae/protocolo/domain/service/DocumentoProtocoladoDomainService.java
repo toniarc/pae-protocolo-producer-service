@@ -157,15 +157,13 @@ public class DocumentoProtocoladoDomainService implements DocumentoProtocoladoSe
 			protocoloDto.setAssunto(cache.getAssunto());
 			protocoloDto.setEspecie(cache.getEspecie());
 
-			//documento.setAno(dps.getAnoDocumento());
-			//documento.setSequencial(dps.getNumeroDocumento());
-
 			protocoloDto.setDocumento(cache.getDocumento());
 			protocoloDto.setDocumentoProtocolado(
 				DocumentoProtocoladoBasicDto.builder()
 					.ano(dps.getAnoDocumento())
 					.id(dps.getId())
 					.numero(dps.getNumeroDocumento())
+					.criadoEm(dps.getCriadoEm())
 					.build());
 
 			protocoloDto.setComplemento(dps.getComplemento());

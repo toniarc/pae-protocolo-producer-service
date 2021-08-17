@@ -10,6 +10,12 @@
 	<artifactId>pae-protocolo-springboot</artifactId>
 	
 	<dependencies>
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+	
 		<dependency>
 			<groupId>br.gov.pa.prodepa.pae.protocolo.producer</groupId>
 			<artifactId>pae-protocolo-producer-activemq-adapter</artifactId>
