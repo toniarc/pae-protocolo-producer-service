@@ -25,6 +25,8 @@ import br.gov.pa.prodepa.pae.protocolo.domain.service.ProtocoloDomainServce;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.ProtocoloService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.SequencialDocumentoDomainService;
 import br.gov.pa.prodepa.pae.protocolo.domain.service.SequencialDocumentoService;
+import br.gov.pa.prodepa.pae.protocolo.domain.service.TipoDestinoDomainService;
+import br.gov.pa.prodepa.pae.protocolo.domain.service.TipoDestinoService;
 
 @Configuration
 public class DomainRegistry {
@@ -38,6 +40,11 @@ public class DomainRegistry {
 		this.applicationContext = applicationContext;
 	}
 
+	@Bean
+	public TipoDestinoService criarTipoDocumentoService() {
+		return new TipoDestinoDomainService(applicationContext.getBean(UsuarioDto.class), applicationContext.getBean(PaeSuporteService.class));
+	}
+	
 	@Bean
 	public InteressadoService criarInteressadoService() {
 		return new InteressadoDomainService(
