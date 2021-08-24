@@ -127,6 +127,11 @@ public class ProtocoloValidator {
 	}
 
 	public ProtocoloValidator validarSeOOrgaoInformadoComoInteressadoExiste(List<OrgaoPaeBasicDto> orgaos) {
+		
+		if( dto.getInteressadosOrgaosIds() == null) {
+			return this;
+		}
+		
 		for(Long id : dto.getInteressadosOrgaosIds()) {
 			if(!orgaos.contains(OrgaoPaeBasicDto.builder().id(id).build())) {
 				de.addError("O órgão interessado selecionado não existe [id: " + id + "]" );
@@ -161,6 +166,11 @@ public class ProtocoloValidator {
 	}
 	
 	public ProtocoloValidator validarSeAsLocalizacoesInteressadasExistem(List<LocalizacaoBasicDto> localizacoes) {
+		
+		if(dto.getInteressadosLocalizacoesIds() == null) {
+			return this;
+		}
+		
 		for(Long id : dto.getInteressadosLocalizacoesIds()) {
 			if(!localizacoes.contains(LocalizacaoBasicDto.builder().id(id).build())) {
 				de.addError("A localização interessada selecionada não existe [id: " + id + "]" );

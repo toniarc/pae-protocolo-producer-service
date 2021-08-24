@@ -1,5 +1,6 @@
 package br.gov.pa.prodepa.pae.protocolo.adapter.webclient;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -33,6 +34,7 @@ public class NucleopaRestClientAdapter implements NucleopaRestClient {
 	public NucleopaRestClientAdapter(RestTemplateBuilder restTemplateBuilder) {
 		restTemplate = restTemplateBuilder
 		          .errorHandler(new RestTemplateResponseErrorHandler())
+		          .setConnectTimeout(Duration.ofSeconds(10))
 		          .build();
 	}
 	

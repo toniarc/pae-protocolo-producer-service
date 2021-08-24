@@ -65,6 +65,7 @@ public class ProtocoloCache {
     }
 
     public List<OrgaoPaeBasicDto> getOrgaos(List<Long> ids) {
+    	
 		return orgaos.stream()
             .filter(a -> ids.contains(a.getId()))
             .collect(Collectors.toList());

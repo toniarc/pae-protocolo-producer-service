@@ -46,7 +46,10 @@ public class ProtocolarDocumentoDto implements Serializable {
 	public List<Long> getOrgaosIds(){
 		List<Long> orgaosIds = new ArrayList<>();
 		orgaosIds.add(orgaoOrigemId);
-		orgaosIds.addAll(interessadosOrgaosIds);
+		
+		if(interessadosOrgaosIds != null) {
+			orgaosIds.addAll(interessadosOrgaosIds);
+		}
 		
 		if(tipoDestino.equals(TipoDestino.ORGAO)) {
 			orgaosIds.addAll(destinosIds);
@@ -56,8 +59,11 @@ public class ProtocolarDocumentoDto implements Serializable {
 	
 	public List<Long> getLocalizacoesIds() {
 		List<Long> localizacaoesIds = new ArrayList<Long>();
-		localizacaoesIds.addAll(interessadosLocalizacoesIds);
 		localizacaoesIds.add(localizacaoOrigemId);
+		
+		if(interessadosLocalizacoesIds != null) {  
+			localizacaoesIds.addAll(interessadosLocalizacoesIds);
+		}
 		
 		if(tipoDestino.equals(TipoDestino.SETOR)) {
 			localizacaoesIds.addAll(destinosIds);

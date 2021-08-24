@@ -86,8 +86,14 @@ public class DocumentoProtocoladoDomainService implements DocumentoProtocoladoSe
 			.validarSeOUsuarioPossuiAoMenosUmVinculoAtivo(cache.getLocalizacoesUsuario())
 		.validar();
 
-		cache.setPessoasFisicas(nucleopaService.buscarPessoaFisicaPorId(new HashSet<>(dto.getInteressadosPessoasFisicasIds())));
-		cache.setPessoasJuridicas(nucleopaService.buscarPessoaJuridicaPorId(new HashSet<>(dto.getInteressadosPessoasJuridicasIds())));
+		if(dto.getInteressadosPessoasFisicasIds() != null) {
+			cache.setPessoasFisicas(nucleopaService.buscarPessoaFisicaPorId(new HashSet<>(dto.getInteressadosPessoasFisicasIds())));
+		}
+		
+		if(dto.getInteressadosPessoasJuridicasIds() != null) {
+			cache.setPessoasJuridicas(nucleopaService.buscarPessoaJuridicaPorId(new HashSet<>(dto.getInteressadosPessoasJuridicasIds())));
+		}
+		
 		cache.setMunicipio(nucleopaService.buscarMunicipioPorCodigoIbge(dto.getMunicipioIbge()));
 
 		DocumentoProtocolado dp = DocumentoProtocolado.buildFrom(dto);
@@ -174,11 +180,21 @@ public class DocumentoProtocoladoDomainService implements DocumentoProtocoladoSe
 			protocoloDto.setMunicipio(cache.getMunicipio());
 			protocoloDto.setUsuarioCadastro(usuarioLogado);
 
-			protocoloDto.setInteressadosPessoasFisicas(dps.getPessoasFisicasInteressadasIds().stream().map(cache::getPessoaFisica).collect(Collectors.toList()));
-			protocoloDto.setInteressadosPessoasJuricas(dps.getPessoasJuridicasInteressadasIds().stream().map(cache::getPessoaJuridica).collect(Collectors.toList()));
+			if(dps.getPessoasFisicasInteressadasIds() != null) {
+				protocoloDto.setInteressadosPessoasFisicas(dps.getPessoasFisicasInteressadasIds().stream().map(cache::getPessoaFisica).collect(Collectors.toList()));
+			}
+			
+			if(dps.getPessoasJuridicasInteressadasIds() != null) {
+				protocoloDto.setInteressadosPessoasJuricas(dps.getPessoasJuridicasInteressadasIds().stream().map(cache::getPessoaJuridica).collect(Collectors.toList()));
+			}
 
-			protocoloDto.setOrgaosInteressados(cache.getOrgaos(dps.getOrgaosInteressadosIds()));
-			protocoloDto.setLocalizacoesInteressadas(cache.getLocalizacoes(dps.getLocalizacoesInteressadasIds()));
+			if(dps.getOrgaosInteressadosIds() != null) {
+				protocoloDto.setOrgaosInteressados(cache.getOrgaos(dps.getOrgaosInteressadosIds()));
+			}
+			
+			if(dps.getLocalizacoesInteressadasIds() != null) {
+				protocoloDto.setLocalizacoesInteressadas(cache.getLocalizacoes(dps.getLocalizacoesInteressadasIds()));
+			}
 
 			// TODO alterar
 			protocoloDto.setAssinantes(dps.getUsuariosQueDevemAssinar().stream().map(id -> UsuarioDto.builder().id(id).build()).collect(Collectors.toList()));
